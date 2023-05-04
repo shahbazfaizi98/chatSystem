@@ -67,6 +67,13 @@ class Home extends CI_Controller {
 		
 	}
 
+	public function register(){
+		$data = array();
+		$data['title'] = 'Register';
+		$this->load->view('web/register',$data);
+		
+	}
+
 	public function logout(){
 		session_destroy();
 		redirect(base_url());

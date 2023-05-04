@@ -53,23 +53,29 @@
         </div>
 
         <!-- Content-->
+
         <div>
             <div class="lg:p-12 max-w-md max-w-xl lg:my-0 my-12 mx-auto p-6 space-y-">
-                <h1 class="lg:text-3xl text-xl font-semibold  mb-6"> Log in</h1>
-                <p class="mb-2 text-black text-lg"> Email or Username</p>
+                <h1 class="lg:text-3xl text-xl font-semibold mb-6"> Sign in</h1>
+                <p class="mb-2 text-black text-lg"> Register to manage your account </p>
                 <form action="#">
-                    <input type="text" placeholder="example@mydomain.com" class="bg-gray-200 mb-2 shadow-none dark:bg-gray-800" style="border: 1px solid #d3d5d8 !important;">
-                    <input type="text" placeholder="***********" class="bg-gray-200 mb-2 shadow-none dark:bg-gray-800" style="border: 1px solid #d3d5d8 !important;">
-                    <div class="flex justify-between my-4">
+                    <div class="flex lg:flex-row flex-col lg:space-x-2">
+                        <input type="text" placeholder="First Name"  class="bg-gray-200 mb-2 shadow-none  dark:bg-gray-800" style="border: 1px solid #d3d5d8 !important;">
+                        <input type="text" placeholder="Last Name" class="bg-gray-200 mb-2 shadow-none  dark:bg-gray-800" style="border: 1px solid #d3d5d8 !important;">
+                    </div>
+                    <input type="text" placeholder="Email" class="bg-gray-200 mb-2 shadow-none  dark:bg-gray-800" style="border: 1px solid #d3d5d8 !important;">
+                    <input type="text" placeholder="Password" class="bg-gray-200 mb-2 shadow-none  dark:bg-gray-800" style="border: 1px solid #d3d5d8 !important;">
+                    <input type="text" placeholder="Confirm Password" class="bg-gray-200 mb-2 shadow-none  dark:bg-gray-800" style="border: 1px solid #d3d5d8 !important;">
+                    <div class="flex justify-start my-4 space-x-1">
                         <div class="checkbox">
                             <input type="checkbox" id="chekcbox1" checked>
-                            <label for="chekcbox1"><span class="checkbox-icon"></span>Remember Me</label>
+                            <label for="chekcbox1"><span class="checkbox-icon"></span> I Agree</label>
                         </div>
-                        <a href="#"> Forgot Your Password? </a>
+                        <a href="#"> Terms and Conditions</a>
                     </div>
                     <button type="submit" class="bg-gradient-to-br from-pink-500 py-3 rounded-md text-white text-xl to-red-400 w-full">Login</button>
                     <div class="text-center mt-5 space-x-2">
-                        <p class="text-base"> Not registered? <a href="form-register.html" class=""> Create a account </a></p>
+                        <p class="text-base"> Do you have an account? <a href="form-login.html"> Login </a></p>
                     </div>
                 </form>
             </div>
@@ -90,7 +96,6 @@
         </div>
 
     </div>
-
 
     <script>
         
@@ -131,16 +136,13 @@
 
     <!-- Scripts
     ================================================== -->
-    <script src="assets/js/tippy.all.min.js"></script>
-    <script src="assets/js/jquery-3.3.1.min.js"></script>
-    <script src="assets/js/uikit.js"></script>
-    <script src="assets/js/simplebar.js"></script>
-    <script src="assets/js/custom.js"></script>
+    <script src="<?php echo ASSET_WEB_URL; ?>assets/js/tippy.all.min.js"></script>
+    <script src="<?php echo ASSET_WEB_URL; ?>assets/js/jquery-3.3.1.min.js"></script>
+    <script src="<?php echo ASSET_WEB_URL; ?>assets/js/uikit.js"></script>
+    <script src="<?php echo ASSET_WEB_URL; ?>assets/js/simplebar.js"></script>
+    <script src="<?php echo ASSET_WEB_URL; ?>assets/js/custom.js"></script>
 
 
     <script src="../unpkg.com/ionicons%405.2.3/dist/ionicons.js"></script>
 </body>
-
-
-<!-- Mirrored from instelloo.netlify.app/form-login.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 02 May 2023 14:57:09 GMT -->
 </html>

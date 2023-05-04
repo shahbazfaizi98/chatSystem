@@ -54,15 +54,8 @@ $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 $route['web/login'] = 'home/index';
 $route['web/dashboard'] = 'home/dashboard';
-$route['web/session'] = 'home/add_school_session';
-$route['web/session-list'] = 'home/list_session';
-$route['web/send-all-notice'] = 'home/add_general_notice';
-$route['web/notice-class-wise'] = 'home/add_class_notice';
-$route['web/notice-student-wise'] = 'home/add_student_notice';
-$route['web/default-notice'] = 'home/add_default_notice';
-$route['web/send-circular'] = 'home/add_circular';
-$route['web/sent-notice'] = 'home/sent_notice';
-$route['web/pop-up-notice'] = 'home/add_popup_notice';
+$route['web/register'] = 'home/register';
+
 
 
 
