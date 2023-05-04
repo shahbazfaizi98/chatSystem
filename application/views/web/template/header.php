@@ -4,10 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+    
     <!-- Favicon -->
     <link href="<?=ASSET_WEB_URL?>assets/images/favicon.png" rel="icon" type="image/png">
-
+    
     <!-- Basic Page Needs
         ================================================== -->
     <title>Instello Sharing Photos</title>
@@ -24,7 +24,7 @@
     <link rel="stylesheet" href="<?=ASSET_WEB_URL?>assets/css/uikit.css">
     <link rel="stylesheet" href="<?=ASSET_WEB_URL?>assets/css/style.css">
     <link rel="stylesheet" href="<?=ASSET_WEB_URL?>assets/css/tailwind.css">
-
+    <script>const BASE_URL="<?=ASSET_WEB_URL?>"</script>
 </head>
 
 <body>

@@ -134,10 +134,18 @@
         })(window, document);
     </script>
 
+    <script src="<?=ASSET_WEB_URL?>assets/js/jquery-3.3.1.min.js"></script>
+    <!-- <script src="<?php echo ASSET_WEB_URL; ?>/libs/jquery/jquery.min.js"></script> -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js" integrity="sha512-rstIgDs0xPgmG6RX1Aba4KV5cWJbAMcvRCVmglpam9SoHZiUCyQVDdH2LPlxoHtrv17XWblE/V/PP+Tr04hbtA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="<?php echo ASSET_WEB_URL; ?>/js/additional-methods.js"></script>
+    <script src="<?php echo ASSET_WEB_URL; ?>/js/common-validation.js"></script>
+    <script src="<?php echo ASSET_WEB_URL; ?>/js/home.js"></script>
+
     <!-- Scripts
     ================================================== -->
     <script src="<?php echo ASSET_WEB_URL; ?>assets/js/tippy.all.min.js"></script>
-    <script src="<?php echo ASSET_WEB_URL; ?>assets/js/jquery-3.3.1.min.js"></script>
+    <!-- <script src="<?php echo ASSET_WEB_URL; ?>assets/js/jquery-3.3.1.min.js"></script> -->
     <script src="<?php echo ASSET_WEB_URL; ?>assets/js/uikit.js"></script>
     <script src="<?php echo ASSET_WEB_URL; ?>assets/js/simplebar.js"></script>
     <script src="<?php echo ASSET_WEB_URL; ?>assets/js/custom.js"></script>
