@@ -26,7 +26,6 @@
     <link rel="stylesheet" href="<?php echo ASSET_WEB_URL; ?>assets/css/tailwind.css">
 
 </head>
-
 <body class="bg-gray-100">
 
 
@@ -58,14 +57,32 @@
             <div class="lg:p-12 max-w-md max-w-xl lg:my-0 my-12 mx-auto p-6 space-y-">
                 <h1 class="lg:text-3xl text-xl font-semibold mb-6"> Sign in</h1>
                 <p class="mb-2 text-black text-lg"> Register to manage your account </p>
-                <form action="#">
+                <form action="#" name="registerForm" id="registerForm">
                     <div class="flex lg:flex-row flex-col lg:space-x-2">
-                        <input type="text" placeholder="First Name"  class="bg-gray-200 mb-2 shadow-none  dark:bg-gray-800" style="border: 1px solid #d3d5d8 !important;">
-                        <input type="text" placeholder="Last Name" class="bg-gray-200 mb-2 shadow-none  dark:bg-gray-800" style="border: 1px solid #d3d5d8 !important;">
+                        <input type="text" name="fullname" id="fullname" placeholder="Full Name"  class="bg-gray-200 mb-2 shadow-none  dark:bg-gray-800" style="border: 1px solid #d3d5d8 !important;">
                     </div>
-                    <input type="text" placeholder="Email" class="bg-gray-200 mb-2 shadow-none  dark:bg-gray-800" style="border: 1px solid #d3d5d8 !important;">
-                    <input type="text" placeholder="Password" class="bg-gray-200 mb-2 shadow-none  dark:bg-gray-800" style="border: 1px solid #d3d5d8 !important;">
-                    <input type="text" placeholder="Confirm Password" class="bg-gray-200 mb-2 shadow-none  dark:bg-gray-800" style="border: 1px solid #d3d5d8 !important;">
+                    <input type="text" name="username" id="username" placeholder="Username" class="bg-gray-200 mb-2 shadow-none  dark:bg-gray-800" style="border: 1px solid #d3d5d8 !important;">
+                    <input type="text" name="email" id="email" placeholder="Email" class="bg-gray-200 mb-2 shadow-none  dark:bg-gray-800" style="border: 1px solid #d3d5d8 !important;">
+                    <input type="text" name="password" id="password" placeholder="Password" class="bg-gray-200 mb-2 shadow-none  dark:bg-gray-800" style="border: 1px solid #d3d5d8 !important;">
+                    <input type="text" name="confirmpassword" id="confirmpassword" placeholder="Confirm Password" class="bg-gray-200 mb-2 shadow-none  dark:bg-gray-800" style="border: 1px solid #d3d5d8 !important;">
+                    <input type="text" name="aboutme" id="aboutme" placeholder="About Me" class="bg-gray-200 mb-2 shadow-none  dark:bg-gray-800" style="border: 1px solid #d3d5d8 !important;">
+                    <input type="text" name="location" id="location" placeholder="Location" class="bg-gray-200 mb-2 shadow-none  dark:bg-gray-800" style="border: 1px solid #d3d5d8 !important;">
+                    <input type="text" name="workingat" id="workingat" placeholder="Working At" class="bg-gray-200 mb-2 shadow-none  dark:bg-gray-800" style="border: 1px solid #d3d5d8 !important;">
+
+                    <div class="row" style="margin-top: 10px;"> 
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <select name="relationship" id="relationship" class="form-control">
+                                    <option value="">Select Relationship</option>
+                                    <option value="1">Unmarried</option>
+                                    <option value="2">Married</option>
+                                    <option value="3">Engaged</option>
+                                    <option value="4">In a relationship</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                   <!--  <input type="text" placeholder="Confirm Password" class="bg-gray-200 mb-2 shadow-none  dark:bg-gray-800" style="border: 1px solid #d3d5d8 !important;"> -->
                     <div class="flex justify-start my-4 space-x-1">
                         <div class="checkbox">
                             <input type="checkbox" id="chekcbox1" checked>
@@ -73,7 +90,9 @@
                         </div>
                         <a href="#"> Terms and Conditions</a>
                     </div>
-                    <button type="submit" class="bg-gradient-to-br from-pink-500 py-3 rounded-md text-white text-xl to-red-400 w-full">Login</button>
+                    <input type="button" name="registerBtn" id="registerBtn" class="bg-gray-200 mb-2 shadow-none  dark:bg-gray-800" value="LOGIN">
+                
+                    <!-- <button type="button" name="registerBtn" id="registerBtn" class="bg-gradient-to-br from-pink-500 py-3 rounded-md text-white text-xl to-red-400 w-full">Login</button> -->
                     <div class="text-center mt-5 space-x-2">
                         <p class="text-base"> Do you have an account? <a href="form-login.html"> Login </a></p>
                     </div>
@@ -138,9 +157,9 @@
     <!-- <script src="<?php echo ASSET_WEB_URL; ?>/libs/jquery/jquery.min.js"></script> -->
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js" integrity="sha512-rstIgDs0xPgmG6RX1Aba4KV5cWJbAMcvRCVmglpam9SoHZiUCyQVDdH2LPlxoHtrv17XWblE/V/PP+Tr04hbtA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="<?php echo ASSET_WEB_URL; ?>/js/additional-methods.js"></script>
-    <script src="<?php echo ASSET_WEB_URL; ?>/js/common-validation.js"></script>
-    <script src="<?php echo ASSET_WEB_URL; ?>/js/home.js"></script>
+    <script src="<?php echo ASSET_WEB_URL; ?>assets/js/additional-methods.js"></script>
+    <script src="<?php echo ASSET_WEB_URL; ?>assets/js/common-validation.js"></script>
+    <script src="<?php echo ASSET_WEB_URL; ?>assets/js/home.js"></script>
 
     <!-- Scripts
     ================================================== -->

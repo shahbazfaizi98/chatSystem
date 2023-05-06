@@ -57,9 +57,9 @@
             <div class="lg:p-12 max-w-md max-w-xl lg:my-0 my-12 mx-auto p-6 space-y-">
                 <h1 class="lg:text-3xl text-xl font-semibold  mb-6"> Log in</h1>
                 <p class="mb-2 text-black text-lg"> Email or Username</p>
-                <form action="#">
-                    <input type="text" placeholder="example@mydomain.com" class="bg-gray-200 mb-2 shadow-none dark:bg-gray-800" style="border: 1px solid #d3d5d8 !important;">
-                    <input type="text" placeholder="***********" class="bg-gray-200 mb-2 shadow-none dark:bg-gray-800" style="border: 1px solid #d3d5d8 !important;">
+                <form action="#" id="loginForm" name="loginForm">
+                    <input id="email" name="email" type="text" placeholder="example@mydomain.com" class="bg-gray-200 mb-2 shadow-none dark:bg-gray-800" style="border: 1px solid #d3d5d8 !important;">
+                    <input id="password" name="password" type="text" placeholder="***********" class="bg-gray-200 mb-2 shadow-none dark:bg-gray-800" style="border: 1px solid #d3d5d8 !important;">
                     <div class="flex justify-between my-4">
                         <div class="checkbox">
                             <input type="checkbox" id="chekcbox1" checked>
@@ -67,7 +67,7 @@
                         </div>
                         <a href="#"> Forgot Your Password? </a>
                     </div>
-                    <button type="submit" class="bg-gradient-to-br from-pink-500 py-3 rounded-md text-white text-xl to-red-400 w-full">Login</button>
+                    <button id="loginBtn" name="loginBtn"type="submit" class="bg-gradient-to-br from-pink-500 py-3 rounded-md text-white text-xl to-red-400 w-full">Login</button>
                     <div class="text-center mt-5 space-x-2">
                         <p class="text-base"> Not registered? <a href="form-register.html" class=""> Create a account </a></p>
                     </div>
@@ -133,17 +133,17 @@
     <!-- <script src="<?php echo ASSET_WEB_URL; ?>/libs/jquery/jquery.min.js"></script> -->
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js" integrity="sha512-rstIgDs0xPgmG6RX1Aba4KV5cWJbAMcvRCVmglpam9SoHZiUCyQVDdH2LPlxoHtrv17XWblE/V/PP+Tr04hbtA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="<?php echo ASSET_WEB_URL; ?>/js/additional-methods.js"></script>
-    <script src="<?php echo ASSET_WEB_URL; ?>/js/common-validation.js"></script>
-    <script src="<?php echo ASSET_WEB_URL; ?>/js/home.js"></script>
+    <script src="<?php echo ASSET_WEB_URL; ?>assets/js/additional-methods.js"></script>
+    <script src="<?php echo ASSET_WEB_URL; ?>assets/js/common-validation.js"></script>
+    <script src="<?php echo ASSET_WEB_URL; ?>assets/js/home.js"></script>
 
     <!-- Scripts
     ================================================== -->
-    <script src="assets/js/tippy.all.min.js"></script>
-    <script src="assets/js/jquery-3.3.1.min.js"></script>
-    <script src="assets/js/uikit.js"></script>
-    <script src="assets/js/simplebar.js"></script>
-    <script src="assets/js/custom.js"></script>
+    <script src="<?php echo ASSET_WEB_URL; ?>assets/js/tippy.all.min.js"></script>
+    <!-- <script src="<?php echo ASSET_WEB_URL; ?>assets/js/jquery-3.3.1.min.js"></script> -->
+    <script src="<?php echo ASSET_WEB_URL; ?>assets/js/uikit.js"></script>
+    <script src="<?php echo ASSET_WEB_URL; ?>assets/js/simplebar.js"></script>
+    <script src="<?php echo ASSET_WEB_URL; ?>assets/js/custom.js"></script>
 
 
     <script src="../unpkg.com/ionicons%405.2.3/dist/ionicons.js"></script>
