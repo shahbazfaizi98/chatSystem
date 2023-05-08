@@ -2848,4 +2848,7 @@ header .uk-dropdown {
     position: absolute;
   }
 }
+.error{
+  color:#c93939;
+}
  

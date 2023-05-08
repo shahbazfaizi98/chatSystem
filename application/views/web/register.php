@@ -24,7 +24,7 @@
     <link rel="stylesheet" href="<?php echo ASSET_WEB_URL; ?>assets/css/uikit.css">
     <link rel="stylesheet" href="<?php echo ASSET_WEB_URL; ?>assets/css/style.css">
     <link rel="stylesheet" href="<?php echo ASSET_WEB_URL; ?>assets/css/tailwind.css">
-
+    <script>const BASE_URL="<?=ASSET_WEB_URL?>"</script>
 </head>
 <body class="bg-gray-100">
 
@@ -58,9 +58,9 @@
                 <h1 class="lg:text-3xl text-xl font-semibold mb-6"> Sign in</h1>
                 <p class="mb-2 text-black text-lg"> Register to manage your account </p>
                 <form action="#" name="registerForm" id="registerForm">
-                    <div class="flex lg:flex-row flex-col lg:space-x-2">
-                        <input type="text" name="fullname" id="fullname" placeholder="Full Name"  class="bg-gray-200 mb-2 shadow-none  dark:bg-gray-800" style="border: 1px solid #d3d5d8 !important;">
-                    </div>
+                    
+                    <input type="text" name="fullname" id="fullname" placeholder="Full Name"  class="bg-gray-200 mb-2 shadow-none  dark:bg-gray-800" style="border: 1px solid #d3d5d8 !important;">
+                    
                     <input type="text" name="username" id="username" placeholder="Username" class="bg-gray-200 mb-2 shadow-none  dark:bg-gray-800" style="border: 1px solid #d3d5d8 !important;">
                     <input type="text" name="email" id="email" placeholder="Email" class="bg-gray-200 mb-2 shadow-none  dark:bg-gray-800" style="border: 1px solid #d3d5d8 !important;">
                     <input type="text" name="password" id="password" placeholder="Password" class="bg-gray-200 mb-2 shadow-none  dark:bg-gray-800" style="border: 1px solid #d3d5d8 !important;">
@@ -90,11 +90,10 @@
                         </div>
                         <a href="#"> Terms and Conditions</a>
                     </div>
-                    <input type="button" name="registerBtn" id="registerBtn" class="bg-gray-200 mb-2 shadow-none  dark:bg-gray-800" value="LOGIN">
                 
-                    <!-- <button type="button" name="registerBtn" id="registerBtn" class="bg-gradient-to-br from-pink-500 py-3 rounded-md text-white text-xl to-red-400 w-full">Login</button> -->
+                    <button type="button" name="registerBtn" id="registerBtn" class="bg-gradient-to-br from-pink-500 py-3 rounded-md text-white text-xl to-red-400 w-full">Register</button>
                     <div class="text-center mt-5 space-x-2">
-                        <p class="text-base"> Do you have an account? <a href="form-login.html"> Login </a></p>
+                        <p class="text-base"> Do you have an account? <a href="<?php echo BASE_URL; ?>"> Login </a></p>
                     </div>
                 </form>
             </div>
@@ -152,7 +151,7 @@
     
         })(window, document);
     </script>
-
+    <input type="hidden" name="baseurl" value="<?php echo BASE_URL ?>" id="baseurl">
     <script src="<?=ASSET_WEB_URL?>assets/js/jquery-3.3.1.min.js"></script>
     <!-- <script src="<?php echo ASSET_WEB_URL; ?>/libs/jquery/jquery.min.js"></script> -->
 

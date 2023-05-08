@@ -24,7 +24,7 @@
     <link rel="stylesheet" href="<?php echo ASSET_WEB_URL; ?>assets/css/uikit.css">
     <link rel="stylesheet" href="<?php echo ASSET_WEB_URL; ?>assets/css/style.css">
     <link rel="stylesheet" href="<?php echo ASSET_WEB_URL; ?>assets/css/tailwind.css">
-
+    <script>const BASE_URL="<?=ASSET_WEB_URL?>"</script>
 </head>
 
 <body class="bg-gray-100">
@@ -65,11 +65,11 @@
                             <input type="checkbox" id="chekcbox1" checked>
                             <label for="chekcbox1"><span class="checkbox-icon"></span>Remember Me</label>
                         </div>
-                        <a href="#"> Forgot Your Password? </a>
+                        <a href="<?php echo BASE_URL; ?>web/forget-password"> Forgot Your Password? </a>
                     </div>
                     <button id="loginBtn" name="loginBtn"type="submit" class="bg-gradient-to-br from-pink-500 py-3 rounded-md text-white text-xl to-red-400 w-full">Login</button>
                     <div class="text-center mt-5 space-x-2">
-                        <p class="text-base"> Not registered? <a href="form-register.html" class=""> Create a account </a></p>
+                        <p class="text-base"> Not registered? <a href="<?php echo BASE_URL; ?>web/register" class=""> Create a account </a></p>
                     </div>
                 </form>
             </div>
@@ -128,10 +128,12 @@
     
         })(window, document);
     </script>
-
+        
     <script src="<?=ASSET_WEB_URL?>assets/js/jquery-3.3.1.min.js"></script>
-    <!-- <script src="<?php echo ASSET_WEB_URL; ?>/libs/jquery/jquery.min.js"></script> -->
-
+    // <script src="<?php echo ASSET_WEB_URL; ?>/libs/jquery/jquery.min.js"></script>
+    
+    <input type="hidden" name="baseurl" value="<?php echo BASE_URL ?>" id="baseurl">
+    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js" integrity="sha512-rstIgDs0xPgmG6RX1Aba4KV5cWJbAMcvRCVmglpam9SoHZiUCyQVDdH2LPlxoHtrv17XWblE/V/PP+Tr04hbtA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="<?php echo ASSET_WEB_URL; ?>assets/js/additional-methods.js"></script>
     <script src="<?php echo ASSET_WEB_URL; ?>assets/js/common-validation.js"></script>

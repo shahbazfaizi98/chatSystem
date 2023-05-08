@@ -74,6 +74,27 @@ class Home extends CI_Controller {
 		
 	}
 
+	public function forget_password(){
+		$data = array();
+		$data['title'] = 'Forget Password';
+		$this->load->view('web/forget-password',$data);
+		
+	}
+
+	public function checkEmail(){
+		$returnArr = array();
+		$email = $_POST['email'];
+		if($email == "test@gmail.com"){
+			$returnArr['error_code'] = 200;
+			$returnArr['error_msg'] = "Email already exist.";
+		}
+		else{
+			$returnArr['error_code'] = 100;
+			$returnArr['error_msg'] = "Email available";
+		}
+		echo json_encode($returnArr);
+	}
+
 	public function logout(){
 		session_destroy();
 		redirect(base_url());

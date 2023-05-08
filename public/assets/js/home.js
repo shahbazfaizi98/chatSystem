@@ -1,5 +1,6 @@
 var base_url = $('#baseurl').val();
 var asset_url = $('#base_url').attr('asset');
+console.log("Check base------>",base_url);
 
     $('#vendor_price').keypress(function(event) {
         if ((event.which != 46 || $(this).val().indexOf('.') != -1) && (event.which < 48 || event.which > 57)) {
@@ -84,5 +85,20 @@ var asset_url = $('#base_url').attr('asset');
   }); 
 
   $('#email').blur(function(){
-    //alert("Email already exist");
+    var email = $("#email").val();
+    if(email!=''){
+
+      $.ajax({
+        type: 'post',
+        url: base_url + 'web/check-email',
+        dataType: 'json',
+        data: {email: email},
+        success: function (response){
+           if(response.error_code==200){
+              alert(response.error_msg); 
+              return false;
+            }
+        }
+        });
+    }
   });
