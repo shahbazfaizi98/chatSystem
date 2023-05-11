@@ -117,3 +117,20 @@ defined('ERROR_CLASS')        OR define('ERROR_CLASS', "alert-danger");
 
 
 /* End */
+
+define('ENBD_PUBLIC_KEY','2D4B6150645367566B59703273357638792F423F4528482B4D6251655468576D');
+define('ENBD_PUBLIC_KEY_IV','2A472D4B614E645267556B5870327335');
+
+function enbddecrypt($data)
+{
+$key = ENBD_PUBLIC_KEY;
+$key_iv = ENBD_PUBLIC_KEY_IV;
+$data_decrypt=openssl_decrypt($data, 'AES-256-CBC', hex2bin($key), OPENSSL_ZERO_PADDING, hex2bin($key_iv));
+return preg_replace('/[^[:print:]]/', '',$data_decrypt);
+}
+
+function Enbdencrypt($data){
+  $key = ENBD_PUBLIC_KEY;
+  $key_iv = ENBD_PUBLIC_KEY_IV;
+  return openssl_encrypt($data,'AES-256-CBC',hex2bin($key), null, hex2bin($key_iv));
+}

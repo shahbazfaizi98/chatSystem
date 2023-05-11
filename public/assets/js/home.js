@@ -77,10 +77,45 @@ console.log("Check base------>",base_url);
     }
   });
 
+  // $('#registerBtn').click(function(){
+  //   $('#registerForm').validate();
+  //   if($('#registerForm').valid()){
+  //     alert("Registered Successfully");
+  //   }
+  // });
+
   $('#registerBtn').click(function(){
     $('#registerForm').validate();
     if($('#registerForm').valid()){
-          alert("User Registered Successfully.");
+      var fullname = $("#fullname").val();
+      var username = $("#username").val();
+      var email = $("#email").val();
+      var password = $("#password").val();
+      // var confirmpassword = $("#confirmpassword").val();
+      var aboutme = $("#aboutme").val();
+      var location = $("#location").val();
+      var workingat = $("#workingat").val();
+      var relationship = $("#relationship").val();
+      // var referralcode = $("#referralcode").val();
+      var createdat = $("#createdat").val();
+      var modifiedat = $("#modifiedat").val();
+        
+        $.ajax({
+          type : "post",
+          url : "submitRegisteredUser",
+          dataType : "JSON",
+          data : {fullname: fullname, username: username, email: email, password: password, aboutme: aboutme, location: location, workingat: workingat, relationship: relationship, createdat: createdat, modifiedat: modifiedat},
+          success : function(response){
+            if(response.error_code == 200){
+              alert(response.error_msg);
+              window.location.reload();
+            }
+            else if(response.error_code == 100){
+              alert(response.error_msg);
+              window.location.reload();
+            }
+          }
+        }) 
     }
   }); 
 
@@ -99,6 +134,46 @@ console.log("Check base------>",base_url);
               return false;
             }
         }
-        });
+      });
     }
   });
+
+  $('#username').blur(function(){
+    var username = $("#username").val();
+    if(username!=''){
+
+      $.ajax({
+        type: 'post',
+        url: base_url + 'web/check-username',
+        dataType: 'json',
+        data: {username: username},
+        success: function (response){
+          if(response.error_code==200){
+            alert(response.error_msg);
+            return false;
+          }
+        }
+      });
+    }
+  });
+
+  $('#referralcode').blur(function(){
+    var referralcode = $("#referralcode").val();
+    if(referralcode!=''){
+
+      $.ajax({
+        type: 'post',
+        url: base_url + 'web/check-referralcode',
+        dataType: 'json',
+        data: {referralcode: referralcode},
+        success: function (response){
+           if(response.error_code==100){
+            alert(response.error_msg); 
+            return false;
+          }
+        }
+      });
+    }
+  });
+
+  

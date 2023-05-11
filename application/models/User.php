@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Vendor extends CI_Model {
+class User extends CI_Model {
 
 	/**
 	 * Index Page for this controller.
@@ -34,6 +34,36 @@ class Vendor extends CI_Model {
       $data = $query->row_array();
       return $data;
     }
+
+    public function emailCheck($email){
+      $this->db->Select("*");
+      $this->db->where('email',$email);
+      $query = $this->db->get('tbl_register');
+      $data = $query->row_array();
+      return $data;
+    }
+
+    public function usernameCheck($username){
+      $this->db->Select("*");
+      $this->db->where('username',$username);
+      $query = $this->db->get('tbl_register');
+      $data = $query->row_array();
+      return $data;
+    }
+
+    public function referralcodeCheck($referralcode){
+      $this->db->Select("*");
+      // $this->db->where('email',$email);
+      $this->db->where('referralcode',$referralcode);
+      $query = $this->db->get('tbl_referral');
+      $data = $query->row_array();
+      return $data;
+    }
+
+    public function saveRegisteredUser($data) {
+			return $this->db->insert("tbl_register",$data);
+		}
+
     
     /* -------------------------Encrypt Decrypt Function Start ------------------------- */
 

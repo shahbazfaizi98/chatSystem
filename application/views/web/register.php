@@ -67,12 +67,12 @@
                     <input type="text" name="confirmpassword" id="confirmpassword" placeholder="Confirm Password" class="bg-gray-200 mb-2 shadow-none  dark:bg-gray-800" style="border: 1px solid #d3d5d8 !important;">
                     <input type="text" name="aboutme" id="aboutme" placeholder="About Me" class="bg-gray-200 mb-2 shadow-none  dark:bg-gray-800" style="border: 1px solid #d3d5d8 !important;">
                     <input type="text" name="location" id="location" placeholder="Location" class="bg-gray-200 mb-2 shadow-none  dark:bg-gray-800" style="border: 1px solid #d3d5d8 !important;">
-                    <input type="text" name="workingat" id="workingat" placeholder="Working At" class="bg-gray-200 mb-2 shadow-none  dark:bg-gray-800" style="border: 1px solid #d3d5d8 !important;">
+                    <input type="text" name="workingat" id="workingat" placeholder="Working At/School/College" class="bg-gray-200 mb-2 shadow-none  dark:bg-gray-800" style="border: 1px solid #d3d5d8 !important;">
 
                     <div class="row" style="margin-top: 10px;"> 
                         <div class="col-md-12">
                             <div class="form-group">
-                                <select name="relationship" id="relationship" class="form-control">
+                                <select name="relationship" id="relationship" class="bg-gray-200 mb-2 shadow-none  dark:bg-gray-800">
                                     <option value="">Select Relationship</option>
                                     <option value="1">Unmarried</option>
                                     <option value="2">Married</option>
@@ -82,7 +82,11 @@
                             </div>
                         </div>
                     </div>
-                   <!--  <input type="text" placeholder="Confirm Password" class="bg-gray-200 mb-2 shadow-none  dark:bg-gray-800" style="border: 1px solid #d3d5d8 !important;"> -->
+                    <div class="row" style="margin-top: 10px;">
+                        <div class="col-md-12">
+                            <input type="text" name="referralcode" id="referralcode" placeholder="Referral Code" class="bg-gray-200 mb-2 shadow-none  dark:bg-gray-800" style="border: 1px solid #d3d5d8 !important;">
+                        </div>
+                    </div>
                     <div class="flex justify-start my-4 space-x-1">
                         <div class="checkbox">
                             <input type="checkbox" id="chekcbox1" checked>

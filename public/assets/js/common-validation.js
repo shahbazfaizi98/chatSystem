@@ -67,6 +67,10 @@ $(document).ready(function (){
         password: {
           required: true
         },
+        confirmpassword: {
+          required: true,
+          equalTo: "#password",
+        },
         aboutme: {
           required: true
         },
@@ -77,6 +81,9 @@ $(document).ready(function (){
           required: true
         },
         relationship: {
+          required: true
+        },
+        referralcode: {
           required: true
         },
       },
@@ -104,6 +111,9 @@ $(document).ready(function (){
         },
         relationship: {
           required: "Please select your Relationhsip Status.",
+        },
+        referralcode: {
+          required: "Please enter Referral Code.",
         },
       },
 

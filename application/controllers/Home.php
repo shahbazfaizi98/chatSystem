@@ -84,7 +84,8 @@ class Home extends CI_Controller {
 	public function checkEmail(){
 		$returnArr = array();
 		$email = $_POST['email'];
-		if($email == "test@gmail.com"){
+		$result = $this->User->emailCheck($email);
+		if($result == true){
 			$returnArr['error_code'] = 200;
 			$returnArr['error_msg'] = "Email already exist.";
 		}
@@ -92,6 +93,92 @@ class Home extends CI_Controller {
 			$returnArr['error_code'] = 100;
 			$returnArr['error_msg'] = "Email available";
 		}
+		echo json_encode($returnArr);
+	}
+
+	public function checkUsername(){
+		$returnArr = array();
+		$username = $_POST['username'];
+		$result = $this->User->usernameCheck($username);
+		if($result == true){
+			$returnArr['error_code'] = 200;
+			$returnArr['error_msg'] = "Username already exist.";
+		}
+		else{
+			$returnArr['error_code'] = 100;
+			$returnArr['error_msg'] = "Username available";
+		}
+		echo json_encode($returnArr);
+	}
+
+	public function checkReferralCode(){
+		$returnArr = array();
+		$referralcode = $this->User->enbdnew_encrypt($_POST['referralcode']);
+		// echo "<pre>"; print_r($referralcode);die;
+		
+	    $result = $this->User->referralcodeCheck($referralcode);
+		if($result == true){
+			if($result['status'] == 0){
+				$returnArr['error_code'] = 100;
+				$returnArr['error_msg'] = "Referral code expired.";
+			}
+			else if($result['status'] == 2){
+				$returnArr['error_code'] = 100;
+				$returnArr['error_msg'] = "Referral code already used.";
+			}
+			else{
+				$returnArr['error_code'] = 200;
+				$returnArr['error_msg'] = "Referral Code Matched.";
+			}
+		}
+		else{
+			$returnArr['error_code'] = 100;
+			$returnArr['error_msg'] = "Referral Code not matched.";
+		}
+		echo json_encode($returnArr);
+	}
+
+	public function submitRegisteredUser(){
+		$data = array();
+		$returnArr = array();
+		$fullname = $this->User->enbdnew_encrypt($_POST['fullname']);
+		$username = $this->User->enbdnew_encrypt($_POST['username']);
+		$email = $this->User->enbdnew_encrypt($_POST['email']);
+		$password = $this->User->enbdnew_encrypt($_POST['password']);
+		// $confirmpassword = $this->User->enbdnew_encrypt($_POST['confirmpassword']);
+		$aboutme = $this->User->enbdnew_encrypt($_POST['aboutme']);
+		$location = $this->User->enbdnew_encrypt($_POST['location']);
+		$workingat = $this->User->enbdnew_encrypt($_POST['workingat']);
+		$relationship = $this->input->post('relationship');
+		// $referralcode = $this->User->enbdnew_encrypt($_POST['referralcode']);
+		$createdat = $this->input->post('createdat');
+		$modifiedat = $this->input->post('modifiedat');
+
+
+		$data['fullname'] = $fullname;
+		$data['username'] = $username;
+		$data['email'] = $email;
+		$data['password'] = $password;
+		// $data['confirmpassword'] = $confirmpassword;
+		$data['aboutme'] = $aboutme;
+		$data['location'] = $location;
+		$data['workingat'] = $workingat;
+		$data['relationship'] = $relationship;
+		// $data['referralcode'] = $referralcode;
+		$data['createdat'] = date('Y-m-d');
+		$data['modifiedat'] = date('Y-m-d');
+
+		$result = $this->User->saveRegisteredUser($data);
+
+		if($result == true){
+			$returnArr['error_code'] = 200;
+			$returnArr['error_msg'] = "User Registered Sucessfuly.";
+		}
+		else{
+			$returnArr['error_code'] = 100;
+			$returnArr['error_msg'] = "Invalid User.";
+		}
+		
 		echo json_encode($returnArr);
 	}
 
