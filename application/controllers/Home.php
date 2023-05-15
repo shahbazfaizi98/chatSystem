@@ -31,12 +31,13 @@ class Home extends CI_Controller {
 	{
 		if($this->input->is_ajax_request()){
 			$returnArr = array();
-			$loginid = $this->input->post('loginid');
-			$pass = $this->input->post('password');
-			//$pass = md5($password);
+			// $email = $this->input->post('email');
+			$loginid = $this->User->enbdnew_encrypt($_POST['loginid']);
+			// $password = $this->input->post('password');
+			$password = $this->User->enbdnew_encrypt($_POST['password']);
 			
-			$result = $this->Vendor->loginCheck($loginid,$pass);
-			//echo "<pre>";print_r($result);echo "</pre>";die;
+			// $result = $this->User->loginCheck($email,$password);
+			$result = $this->User->loginCheck($loginid,$password);
 			if($result == true){
 				$this->session->set_userdata('userdetails',$result);
 				$returnArr['error_code'] = 200;
@@ -61,9 +62,14 @@ class Home extends CI_Controller {
 	}
 	
 	public function dashboard(){
-		$data = array();
-		$data['title'] = 'Dashboard';
-		web_inner_view('web/dashboard',$data);
+		// if($this->session->userdata('userdetails') == true){
+			$data = array();
+			$data['title'] = 'Dashboard';
+			web_inner_view('web/dashboard',$data);
+		// }
+		// else{
+		// 	redirect('web/login');
+		// }
 		
 	}
 
@@ -145,7 +151,6 @@ class Home extends CI_Controller {
 		$username = $this->User->enbdnew_encrypt($_POST['username']);
 		$email = $this->User->enbdnew_encrypt($_POST['email']);
 		$password = $this->User->enbdnew_encrypt($_POST['password']);
-		// $confirmpassword = $this->User->enbdnew_encrypt($_POST['confirmpassword']);
 		$aboutme = $this->User->enbdnew_encrypt($_POST['aboutme']);
 		$location = $this->User->enbdnew_encrypt($_POST['location']);
 		$workingat = $this->User->enbdnew_encrypt($_POST['workingat']);
@@ -159,7 +164,6 @@ class Home extends CI_Controller {
 		$data['username'] = $username;
 		$data['email'] = $email;
 		$data['password'] = $password;
-		// $data['confirmpassword'] = $confirmpassword;
 		$data['aboutme'] = $aboutme;
 		$data['location'] = $location;
 		$data['workingat'] = $workingat;
@@ -180,6 +184,17 @@ class Home extends CI_Controller {
 		}
 		
 		echo json_encode($returnArr);
+	}
+
+	public function profile(){
+		if($this->session->userdata('userdetails') == true){
+			$data = array();
+			$data['title'] = 'profile';
+			web_inner_view('web/profile',$data);
+		}
+		else{
+			redirect('web/index');
+		}
 	}
 
 	public function logout(){

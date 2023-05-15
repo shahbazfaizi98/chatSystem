@@ -38,7 +38,7 @@ $(document).ready(function (){
       },
       messages: {
         email: {
-          required: "Please Enter your Email Id",
+          required: "Please Enter your valid Email Id",
         },
         password: {
           required: "Please Enter your Password",

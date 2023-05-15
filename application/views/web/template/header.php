@@ -52,7 +52,7 @@
                         <img src="<?=ASSET_WEB_URL?>assets/images/avatars/avatar-2.jpg"
                             class="bg-gray-200 border-4 border-white rounded-full w-full h-full">
                     </div>
-                    <a href="profile.html" class="text-xl font-medium capitalize mt-4 uk-link-reset"> Stella Johnson
+                    <a href="<?php echo BASE_URL?>/web/profile" class="text-xl font-medium capitalize mt-4 uk-link-reset"><?php echo $this->User->enbdnew_decrypt($_SESSION['userdetails']['fullname']);?>
                     </a>
                     <div class="flex justify-around w-full items-center text-center uk-link-reset text-gray-800 mt-6">
                         <div>
@@ -146,7 +146,7 @@
                         <hr class="my-2">
                     </li>
                     <li>
-                        <a href="form-login.html">
+                        <a href="<?php echo BASE_URL ?>/web/logout">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                 stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -283,7 +283,7 @@
                                         </div>
                                         <div class="drop_content">
                                             <p>
-                                                <strong>Stella Johnson</strong> Nonummy nibh euismod
+                                                <strong><?php $_SESSION ['userdetails']['fullname'];?></strong> Nonummy nibh euismod
                                                 <span class="text-link"> Imperdiet doming </span>
                                             </p>
                                             <span class="time-ago"> 9 hours ago </span>
@@ -421,7 +421,7 @@
                                 <li><a href="#"> Account setting </a> </li>
                                 <li><a href="#"> Payments </a> </li>
                                 <li><a href="#"> Help </a> </li>
-                                <li><a href="form-login.html"> Log Out</a></li>
+                                <li><a href="<?php echo BASE_URL ?>web/logout"> Log Out</a></li>
                             </ul>
                         </div>
 

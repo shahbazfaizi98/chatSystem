@@ -25,12 +25,20 @@ class User extends CI_Model {
         //$this->load->database(); <----remove this
       }
 
+    // public function loginCheck($email, $password) {
+    //   $this->db->Select("*");
+    //   $this->db->where('email',$email);
+    //   $this->db->where('password',$password);
+    //   $query = $this->db->get('tbl_register');
+    //   $data = $query->row_array();
+    //   return $data;
+    // }
+
     public function loginCheck($loginid, $pass) {
       $this->db->Select("*");
       $this->db->where('email',$loginid);
       $this->db->where('password',$pass);
-      //$this->db->where('accountStatus',1);
-      $query = $this->db->get('tbl_user');
+      $query = $this->db->get('tbl_register');
       $data = $query->row_array();
       return $data;
     }

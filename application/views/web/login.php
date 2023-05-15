@@ -57,7 +57,7 @@
             <div class="lg:p-12 max-w-md max-w-xl lg:my-0 my-12 mx-auto p-6 space-y-">
                 <h1 class="lg:text-3xl text-xl font-semibold  mb-6"> Log in</h1>
                 <p class="mb-2 text-black text-lg"> Email or Username</p>
-                <form action="#" id="loginForm" name="loginForm">
+                <form action="dashboard" id="loginForm" name="loginForm">
                     <input id="email" name="email" type="text" placeholder="example@mydomain.com" class="bg-gray-200 mb-2 shadow-none dark:bg-gray-800" style="border: 1px solid #d3d5d8 !important;">
                     <input id="password" name="password" type="text" placeholder="***********" class="bg-gray-200 mb-2 shadow-none dark:bg-gray-800" style="border: 1px solid #d3d5d8 !important;">
                     <div class="flex justify-between my-4">
@@ -67,7 +67,7 @@
                         </div>
                         <a href="<?php echo BASE_URL; ?>web/forget-password"> Forgot Your Password? </a>
                     </div>
-                    <button id="loginBtn" name="loginBtn"type="submit" class="bg-gradient-to-br from-pink-500 py-3 rounded-md text-white text-xl to-red-400 w-full">Login</button>
+                    <button id="loginBtn" name="loginBtn"type="button" class="bg-gradient-to-br from-pink-500 py-3 rounded-md text-white text-xl to-red-400 w-full">Login</button>
                     <div class="text-center mt-5 space-x-2">
                         <p class="text-base"> Not registered? <a href="<?php echo BASE_URL; ?>web/register" class=""> Create a account </a></p>
                     </div>
@@ -129,7 +129,7 @@
         })(window, document);
     </script>
         
-    <script src="<?=ASSET_WEB_URL?>assets/js/jquery-3.3.1.min.js"></script>
+    <script src="<?php echo ASSET_WEB_URL;?>assets/js/jquery-3.3.1.min.js"></script>
     // <script src="<?php echo ASSET_WEB_URL; ?>/libs/jquery/jquery.min.js"></script>
     
     <input type="hidden" name="baseurl" value="<?php echo BASE_URL ?>" id="baseurl">

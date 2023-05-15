@@ -1,3 +1,11 @@
+<?php 
+// $uid = isset($_SESSION['userdetails']['uid'])?$_SESSION['userdetails']['uid']:'';
+// if($uid == ''){
+//     $_SESSION['userdetails']['uid'] = $_SESSION['userdetails']['uid'];
+//     $_SESSION['userdetails']['fullname'] = $_SESSION['userdetails']['fullname'];
+//     $_SESSION['userdetails']['email'] = $_SESSION['userdetails']['email'];
+// }
+//?>
 <div class="container m-auto">
 
                 <h1 class="lg:text-2xl text-lg font-extrabold leading-none text-gray-900 tracking-tight mb-5"> Feed </h1>

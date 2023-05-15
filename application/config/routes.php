@@ -61,4 +61,5 @@ $route['web/forget-password'] = 'home/forget_password';
 $route['web/check-email'] = 'home/checkEmail';
 $route['web/check-username'] = 'home/checkUsername';
 $route['web/check-referralcode'] = 'home/checkReferralCode';
+$route['web/profile'] = 'home/profile';
 $route['web/logout'] = 'home/logout';

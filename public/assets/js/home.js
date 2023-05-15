@@ -73,16 +73,38 @@ console.log("Check base------>",base_url);
   $('#loginBtn').click(function(){
     $('#loginForm').validate();
     if($('#loginForm').valid()){
-      alert("Login Successfully");
+      // var email = $('#email').val();
+      var loginid = $('#email').val();
+      var password = $('#password').val();
+
+      $.ajax({
+        type: 'post',
+        url: 'web/login',
+        dataType: 'json',
+        beforeSend: function(){
+                    $('#loader').show();
+                    $('#final-book-btn').prop('disabled', true);
+        },
+        data: {loginid: loginid, password: password},
+        success: function(response){
+          $('#loader').hide();
+            if (response.error_code == 200){
+              $('#login-form-error').addClass(response.error_class).html(response.error_msg).show();
+              setTimeout(function(){ $('#login-form-error').removeClass(response.error_class).html('');
+              window.location.href =base_url+"web/dashboard"  
+              }, 3000);
+            }
+            else if (response.error_code == 100) {
+              $('#login-btn').prop('disabled', false);
+              $('#login-form-error').addClass(response.error_class).html(response.error_msg).show();
+              setTimeout(function(){ $('#login-form-error').removeClass(response.error_class).html(''); }, 3000);
+            }
+        }
+      });
     }
   });
 
-  // $('#registerBtn').click(function(){
-  //   $('#registerForm').validate();
-  //   if($('#registerForm').valid()){
-  //     alert("Registered Successfully");
-  //   }
-  // });
+
 
   $('#registerBtn').click(function(){
     $('#registerForm').validate();
