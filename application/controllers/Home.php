@@ -197,6 +197,14 @@ class Home extends CI_Controller {
 		}
 	}
 
+	public function peopleyoumayknow(){
+		$data = array();
+		$uid = $_SESSION['userdetails']['uid'];
+		$people = $this->User->getPeoples($uid);
+		$data['peoples'] = $people;
+		echo json_encode($data);
+	}
+
 	public function logout(){
 		session_destroy();
 		redirect(base_url());

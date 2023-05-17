@@ -198,4 +198,43 @@ console.log("Check base------>",base_url);
     }
   });
 
+
+  function loadmore_items(){
+    var base_url = $('#baseurl').val();
+    $.ajax({
+      url: base_url + 'web/get-people',
+      data:{
+        
+      },
+      dataType : "JSON",
+      beforeSend: function(){
+        $('#loader').show();
+      },
+      success :function(data){
+        $('#loader').hide();
+        var result = data.peoples;
+        //console.log(asset_url);
+        $.each(result, function (key, val) {
+          var output = '';
+          output += `<div class="flex items-center justify-between py-3">
+          <div class="flex flex-1 items-center space-x-4">
+              <a href="profile.html">
+                  <img src="`+base_url+`public/assets/images/avatars/avatar-2.jpg" class="bg-gray-200 rounded-full w-10 h-10">
+              </a>
+              <div class="flex flex-col">
+                  <span class="block capitalize font-semibold"> Johnson smith </span>
+                  <span class="block capitalize text-sm"> Australia </span>
+              </div>
+          </div>
+          
+          <a href="#" class="border border-gray-200 font-semibold px-4 py-1 rounded-full hover:bg-pink-600 hover:text-white hover:border-pink-600 dark:border-gray-800"> Add Friend </a>
+      </div>`;
+        $("#allusers").append(output);
+        //console.log("check output",output);
+        });
+      }
+    });
+  }
+
+
   

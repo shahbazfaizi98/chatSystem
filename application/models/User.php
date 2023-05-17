@@ -72,6 +72,14 @@ class User extends CI_Model {
 			return $this->db->insert("tbl_register",$data);
 		}
 
+    public function getPeoples($uid){
+      $this->db->Select("uid,fullname");
+      $this->db->where('uid != ',$uid);
+      $query = $this->db->get('tbl_register');
+      $data = $query->result_array();
+      return $data;
+    }
+
     
     /* -------------------------Encrypt Decrypt Function Start ------------------------- */
 
