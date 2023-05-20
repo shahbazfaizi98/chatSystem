@@ -205,6 +205,27 @@ class Home extends CI_Controller {
 		echo json_encode($data);
 	}
 
+	public function saveFriendUser(){
+		$data = array();
+		$returnArr = array();
+		$uid = $_POST['uid'];
+		$fid = $_POST['fid'];
+		$data['uid'] = $uid;
+		$data['fid'] = $fid;
+		$result = $this->User->saveFriend($data);
+		if($result == true){
+			$returnArr['error_code'] = 200;
+			$returnArr['error_msg'] = "Request Sent";
+		}
+		else{
+			$returnArr['error_code'] = 100;
+			$returnArr['error_msg'] = "Something Went Wrong.";
+		}
+
+		echo json_encode($returnArr);
+	}
+
+
 	public function logout(){
 		session_destroy();
 		redirect(base_url());

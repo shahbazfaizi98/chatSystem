@@ -73,12 +73,18 @@ class User extends CI_Model {
 		}
 
     public function getPeoples($uid){
-      $this->db->Select("uid,fullname");
-      $this->db->where('uid != ',$uid);
-      $query = $this->db->get('tbl_register');
+      $this->db->Select("ru.uid as friendid,ru.fullname");
+      $this->db->from("tbl_register ru");
+      $this->db->join("tbl_friend fu","ru.uid = fu.uid","left");
+      $this->db->where('ru.uid != ',$uid);
+      $query = $this->db->get();
       $data = $query->result_array();
       return $data;
     }
+
+    public function saveFriend($data) {
+			return $this->db->insert("tbl_friend",$data);
+		}
 
     
     /* -------------------------Encrypt Decrypt Function Start ------------------------- */

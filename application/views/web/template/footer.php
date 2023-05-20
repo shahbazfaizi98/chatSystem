@@ -130,7 +130,7 @@
     
         })(window, document);
     </script>
-    
+    <input type="text" id="hid" name="hid" value="<?php echo $_SESSION['userdetails']['uid'];?>">
     <input type="hidden" name="baseurl" value="<?= BASE_URL ?>" id="baseurl" ?>">
     <!-- JAVASCRIPT -->
     

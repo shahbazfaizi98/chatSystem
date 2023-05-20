@@ -59,6 +59,7 @@ $route['web/submitRegisteredUser'] = 'home/submitRegisteredUser';
 $route['web/forget-password'] = 'home/forget_password';
 
 $route['web/get-people'] = 'home/peopleyoumayknow';
+$route['web/save-friend'] = 'home/saveFriendUser';
 
 $route['web/check-email'] = 'home/checkEmail';
 $route['web/check-username'] = 'home/checkUsername';
