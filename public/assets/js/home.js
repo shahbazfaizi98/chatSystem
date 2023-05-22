@@ -202,6 +202,7 @@ console.log("Check base------>",base_url);
   function loadmore_items(){
     var base_url = $('#baseurl').val();
     var hid = $('#hid').val();
+    $("#allusers").html('');
     $.ajax({
       url: base_url + 'web/get-people',
       data:{
@@ -214,7 +215,10 @@ console.log("Check base------>",base_url);
       success :function(data){
         $('#loader').hide();
         var result = data.peoples;
-        console.log(result);
+        //console.log(result);
+        if (result.length==0) {
+          $("#nouserfound").show();
+        }
         
         $.each(result, function (key, val) {
           var output = '';
@@ -231,7 +235,7 @@ console.log("Check base------>",base_url);
               </div>
           </div>
           
-          <a href="#" class="border border-gray-200 font-semibold px-4 py-1 rounded-full hover:bg-pink-600 hover:text-white hover:border-pink-600 dark:border-gray-800" onclick="addFriendBtn('${hid}','${friendid}');"> Add Friend </a>
+          <button type="button" id=frnd`+friendid+` href="#" class="test btn border border-gray-200 font-semibold px-4 py-1 rounded-full hover:bg-pink-600 hover:text-white hover:border-pink-600 dark:border-gray-800" onclick="addFriendBtn('${hid}','${friendid}');"> Add Friend </button>
       </div>`;
         $("#allusers").append(output);
         //console.log("check output",output);
@@ -241,9 +245,15 @@ console.log("Check base------>",base_url);
   }
 
   function addFriendBtn(uid,fid){
+
+    //const div = document.querySelector('.test');
+    // console.log("Ceck div----",div);return false;
+    // div.addEventListener('click', () => {
+    //   div.classList.add('hidden');
+    // })
+    //console.log("Check--------------------->",div);
     var uid = uid;
     var fid = fid;
-    
     $.ajax({
       type: 'post',
       url: base_url + 'web/save-friend',
@@ -251,7 +261,11 @@ console.log("Check base------>",base_url);
       data: {uid: uid, fid: fid},
       success: function (response){
          if(response.error_code==200){
-          loadmore_items();
+          //div.remove();
+          setTimeout(function () {
+            $("#allusers").html('');
+            loadmore_items();
+          }, 1000);
         }
         else{
           alert(response.error_msg);

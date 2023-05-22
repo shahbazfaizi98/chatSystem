@@ -573,12 +573,17 @@
                         <div class="bg-white dark:bg-gray-900 shadow-md rounded-md overflow-hidden">
 
                             <div class="bg-gray-50 dark:bg-gray-800 border-b border-gray-100 flex items-baseline justify-between py-4 px-6 dark:border-gray-800">
-                                <h2 class="font-semibold text-lg">Who to follow</h2>
-                                <a href="#" id="follow"> Refresh</a>
+                                <h2 class="font-semibold text-lg">People you may know</h2>
+                                <a href="#" onclick="loadmore_items();"> Refresh</a>
                             </div>
                            
-                            <div class="divide-gray-300 divide-gray-50 divide-opacity-50 divide-y px-4 dark:divide-gray-800 dark:text-gray-100" id="allusers">
-                                
+                            <div class="divide-gray-300 divide-gray-50 divide-opacity-50 divide-y px-4 dark:divide-gray-800 dark:text-gray-100" style="height: 275px!important;">
+                                <div id="allusers">
+                                  
+                                </div>
+                                <div id="nouserfound" style="display: none;">
+                                  <p>User not found.</p>
+                                </div>
                             </div>
 
                         </div>
@@ -646,7 +651,7 @@
             </div>
     <script>
     $(document).ready(function () {
-        console.log("document loaded");
+        //console.log("document loaded");
         loadmore_items();
     });
     </script>

@@ -94,7 +94,7 @@
 
 
 
-    <script>
+    <!-- <script>
         
         (function (window, document, undefined) {
             'use strict';
@@ -129,7 +129,7 @@
             }, false);
     
         })(window, document);
-    </script>
+    </script> -->
     <input type="text" id="hid" name="hid" value="<?php echo $_SESSION['userdetails']['uid'];?>">
     <input type="hidden" name="baseurl" value="<?= BASE_URL ?>" id="baseurl" ?>">
     <!-- JAVASCRIPT -->
@@ -150,7 +150,7 @@
     <script src="<?=ASSET_WEB_URL?>assets/js/custom.js"></script>
 
 
-    <script src="../unpkg.com/ionicons%405.2.3/dist/ionicons.js"></script>
+    <!-- <script src="../unpkg.com/ionicons%405.2.3/dist/ionicons.js"></script> -->
 </body>
 
 

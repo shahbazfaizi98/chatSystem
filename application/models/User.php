@@ -73,13 +73,21 @@ class User extends CI_Model {
 		}
 
     public function getPeoples($uid){
-      $this->db->Select("ru.uid as friendid,ru.fullname");
-      $this->db->from("tbl_register ru");
-      $this->db->join("tbl_friend fu","ru.uid = fu.uid","left");
-      $this->db->where('ru.uid != ',$uid);
-      $query = $this->db->get();
+      $sql = "SELECT ru.uid as friendid, ru.fullname  FROM `tbl_register` ru WHERE `ru`.`uid` != '".$uid."' AND ru.uid NOT IN (SELECT fid from tbl_friend fu where fu.uid='".$uid."') ORDER BY RAND()";
+      $query = $this->db->query($sql);
       $data = $query->result_array();
-      return $data;
+      $d2 = array();
+      $returnArr = array();
+      if(count($data)>0){
+        foreach ($data as $key => $value) {
+          $fid = $value['friendid'];
+          $fname = $this->enbdnew_decrypt($value['fullname']);
+          $d2['friendid'] = $fid;
+          $d2['fullname'] = $fname;
+          array_push($returnArr, $d2);
+        }
+      }
+      return $returnArr;
     }
 
     public function saveFriend($data) {
