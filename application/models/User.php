@@ -90,6 +90,22 @@ class User extends CI_Model {
       return $returnArr;
     }
 
+    public function getPosts($uid){
+      $sql = "SELECT * FROM tbl_post LIMIT 10 OFFSET 10";  
+      $query = $this->db->query($sql);
+      $data = $query->result_array();
+      $d2 = array();
+      $returnArr = array();
+      // if(count($data)>0){
+      //   foreach ($data as $key => $value){
+      //     $pid = $value['postid'];
+      //     $d2['postid'] = $pid;
+      //     array_push($returnArr,$d2);
+      //   }
+      // }
+      return $data;
+    }
+
     public function saveFriend($data) {
 			return $this->db->insert("tbl_friend",$data);
 		}

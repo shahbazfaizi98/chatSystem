@@ -225,6 +225,14 @@ class Home extends CI_Controller {
 		echo json_encode($returnArr);
 	}
 
+	public function post(){
+		$data = array();
+		$uid = $_SESSION['userdetails']['uid'];
+		$offset = $_POST['offsetnum'];
+		$post = $this->User->getPosts($uid,$offset);
+		$data['posts'] = $post;
+		echo json_encode($data);
+	}
 
 	public function logout(){
 		session_destroy();
