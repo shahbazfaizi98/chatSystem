@@ -9,25 +9,22 @@
 <div class="container m-auto">
 
                 <h1 class="lg:text-2xl text-lg font-extrabold leading-none text-gray-900 tracking-tight mb-5"> Feed </h1>
-
+                <input type="hidden" id="offsetnum" value="0">
                 <div class="lg:flex justify-center lg:space-x-10 lg:space-y-0 space-y-5">
 
                     <!-- left sidebar-->
                     <div class="space-y-5 flex-shrink-0 lg:w-7/12">
-                    <input type="text" id="offsetnum" value="0">
+                    
                         <!-- post 1-->
-                        <div id="allposts"></div>
+                        <div class="space-y-5 flex-shrink-0 lg:w-12/12"  id="allposts"></div>
+                        
     
                         <!-- post 2-->                       
                        
                         
 
                         <!-- Load more-->
-                        <div class="flex justify-center mt-6" onclick="load_more_posts();" id="btnloadmore>
-                            <button
-                                class="bg-white dark:bg-gray-900 font-semibold my-3 px-6 py-2 rounded-full shadow-md dark:bg-gray-800 dark:text-white">
-                                Load more ..</button>
-                        </div>
+                        
  
                         <!-- post 3-->
                         
@@ -36,10 +33,14 @@
                         
                         
                         <!-- Load more-->
-                        
-
+                        <div class="flex justify-center mt-6" onclick="load_more_posts_items();" id="btnloadmore">
+                            <button class="bg-white dark:bg-gray-900 font-semibold my-3 px-6 py-2 rounded-full shadow-md dark:bg-gray-800 dark:text-white;">
+                                Load more ..</button>
+                        </div>
 
                     </div>
+
+                    
 
                     <!-- right sidebar-->
                     <div class="lg:w-5/12">
@@ -119,7 +120,9 @@
 
                     </div>
 
-                </div>               
+                </div> 
+                
+                
           
 
             </div>

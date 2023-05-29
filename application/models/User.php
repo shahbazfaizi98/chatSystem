@@ -90,8 +90,9 @@ class User extends CI_Model {
       return $returnArr;
     }
 
-    public function getPosts($uid){
-      $sql = "SELECT * FROM tbl_post LIMIT 10 OFFSET 10";  
+    public function getPosts($uid,$offset){
+      $limit = 10;
+      $sql = "SELECT * FROM tbl_post LIMIT $limit OFFSET $offset";  
       $query = $this->db->query($sql);
       $data = $query->result_array();
       $d2 = array();
