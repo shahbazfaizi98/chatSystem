@@ -59,18 +59,18 @@
                         <div>
                             <a href="#">
                                 <strong>Post</strong>
-                                <div> 130</div>
-                            </a>
-                        </div>
-                        <div>
-                            <a href="#">
-                                <strong>Following</strong>
-                                <div> 1,230</div>
+                                <div><?php echo $post['total'];?></div>
                             </a>
                         </div>
                         <div>
                             <a href="#">
                                 <strong>Followers</strong>
+                                <div> 1,230</div>
+                            </a>
+                        </div>
+                        <div>
+                            <a href="#">
+                                <strong>Friend Request</strong>
                                 <div> 2,430</div>
                             </a>
                         </div>
@@ -419,7 +419,7 @@
                         </a>
                         <div uk-drop="mode: click;offset:9" class="header_dropdown profile_dropdown border-t">
                             <ul>
-                                <li><a href="#"> Account setting </a> </li>
+                                <li><a href="userinfo"> Account setting </a> </li>
                                 <li><a href="#"> Payments </a> </li>
                                 <li><a href="#"> Help </a> </li>
                                 <li><a href="<?php echo BASE_URL ?>web/logout"> Log Out</a></li>

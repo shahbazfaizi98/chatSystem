@@ -62,14 +62,23 @@ class Home extends CI_Controller {
 	}
 	
 	public function dashboard(){
-		// if($this->session->userdata('userdetails') == true){
+		if($this->session->userdata('userdetails') == true){
 			$data = array();
+			$uid = $_SESSION['userdetails']['uid'];
+			$post = $this->User->getAllPost($uid);
+			// $friends = $this->User->getAllfriends($uid);
+			// $request = $this->User->getAllRequest($uid);
+			//echo "<pre>";print_r($post);die;
 			$data['title'] = 'Dashboard';
+			$data['post'] = $post;
+			// $data['friends'] = $friends;
+			// $data['request'] = $request;
+
 			web_inner_view('web/dashboard',$data);
-		// }
-		// else{
-		// 	redirect('web/login');
-		// }
+		 }
+		 else{
+		 	redirect('web/login');
+		 }
 		
 	}
 
@@ -232,6 +241,16 @@ class Home extends CI_Controller {
 		$post = $this->User->getPosts($uid,$offset);
 		$data['posts'] = $post;
 		echo json_encode($data);
+	}
+
+	public function userinfo(){
+		$data = array();
+		$data['title'] = 'Userinfo';
+		$uid = $_SESSION['userdetails']['uid'];
+		$userData = $this->User->getUserData($uid);
+		$data['userdata'] = $userData;
+		//echo "<pre>";print_r($userData);die;
+		web_inner_view('web/userinfo',$data);
 	}
 
 	public function logout(){

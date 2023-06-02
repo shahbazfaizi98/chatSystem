@@ -111,6 +111,26 @@ class User extends CI_Model {
 			return $this->db->insert("tbl_friend",$data);
 		}
 
+    public function getUserData($uid){
+      // $this->db->select('fullname,username,email,aboutme,location,workingat,relationship,createdat,modifiedat');
+      // $this->db->from('tbl_register');
+      // $this->db->where('uid',$uid);
+      // $query = $this->db->get();
+      // return $query->row_array();
+      $sql = "SELECT ru.uid, ru.fullname, ru.username, ru.email, ru.aboutme, ru.location, ru.workingat, ru.relationship,ru.createdat, ru.modifiedat, rf.referralcode  FROM `tbl_register` ru LEFT JOIN tbl_referral rf ON ru.uid = rf.uid where ru.uid='".$uid."'";
+      $query = $this->db->query($sql);
+      $data = $query->row_array();
+      return $data;
+    }
+
+    public function getAllPost($uid){
+      $this->db->Select("count(pid) as total");
+      $this->db->where('uid',$uid);
+      $query = $this->db->get('tbl_post');
+      $data = $query->row_array();
+      return $data;
+    }
+
     
     /* -------------------------Encrypt Decrypt Function Start ------------------------- */
 
