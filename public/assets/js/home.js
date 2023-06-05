@@ -616,6 +616,105 @@ console.log("Check base------>",base_url);
     });
   }
 
+  $('#submitBtn').click(function(){
+    $('#userinfoForm').validate();
+    if($('#userinfoForm').valid()){
+
+      var uid = $("#uid").val();
+      var fullname = $("#fullname").val();
+      var aboutme = $("#aboutme").val();
+      var location = $("#location").val();
+      var workingat = $("#workingat").val();
+      var relationship = $("#relationship").val();
+      // var createdat = $("#createdat").val();
+      // var modifiedat = $("#modifiedat").val();
+        
+        $.ajax({
+          type : "post",
+          url : "submitUserinfo",
+          dataType : "JSON",
+          data : {uid: uid, fullname: fullname, aboutme: aboutme, location: location, workingat: workingat, relationship: relationship},
+          success : function(response){
+            if(response.error_code == 200){
+              alert(response.error_msg);
+              window.location.reload();
+            }
+            else if(response.error_code == 100){
+              alert(response.error_msg);
+              window.location.reload();
+            }
+          }
+        }) 
+    }
+  });  
+
+
+  function dataofalluser(){
+
+    $.ajax({
+      type : "POST",
+      url : base_url + 'web/get-all-user-data',
+      dataType : "JSON",
+      data : {},
+      success : function(response){
+        var posts = response.post.total;
+        var friends = response.friends.totalfriends;
+        var request = response.requests.totalrequests;
+        // console.log(response);
+        $('#userpostdata').text(posts);
+        $('#userfrienddata').text(friends);
+        $('#userrequestdata').text(request);
+        
+      }
+    }) 
+
+  }
+
+  function loadfriend_msg(){
+    var base_url = $('#baseurl').val();
+    var hid = $('#hid').val();
+    $("#allusers").html('');
+    $.ajax({
+      url: base_url + 'web/friend-list',
+      data:{
+        
+      },
+      dataType : "JSON",
+      beforeSend: function(){
+        $('#loader').show();
+      },
+      success :function(data){
+        $('#loader').hide();
+        var result = data.peoples;
+        //console.log(result);
+        if (result.length==0) {
+          $("#nouserfound").show();
+        }
+        
+        $.each(result, function (key, val) {
+          var output = '';
+          var friendid = val['friendid'];
+          var fullname = val['fullname'];
+          output += `<li>
+          <a href="#" class="block flex items-center py-3 px-4 space-x-3 hover:bg-gray-100 dark:hover:bg-gray-700">
+              <div class="w-12 h-12 rounded-full relative flex-shrink-0">
+                  <img src="assets/images/avatars/avatar-2.jpg" alt="" class="absolute h-full rounded-full w-full">
+                  <span class="absolute bg-green-500 border-2 border-white bottom-0 h-3 m-0.5 right-0 rounded-full shadow-md w-3"></span>
+              </div>
+              <div class="flex-1 min-w-0 relative text-gray-500">
+                  <h4 class="text-black font-semibold dark:text-white">${fullname}</h4>
+                  <span class="absolute right-0 top-1 text-xs">Sun</span>
+                  <p class="truncate">Esmod tincidunt ut laoreet</p>
+              </div>
+          </a>
+      </li>`;
+        $("#friendlist").append(output);
+        //console.log("check output",output);
+        });
+      }
+    });
+  }
+
   
 
   

@@ -66,13 +66,13 @@ class Home extends CI_Controller {
 			$data = array();
 			$uid = $_SESSION['userdetails']['uid'];
 			$post = $this->User->getAllPost($uid);
-			// $friends = $this->User->getAllfriends($uid);
-			// $request = $this->User->getAllRequest($uid);
+			$friends = $this->User->getAllfriends($uid);
+			$requests = $this->User->getAllRequest($uid);
 			//echo "<pre>";print_r($post);die;
 			$data['title'] = 'Dashboard';
 			$data['post'] = $post;
-			// $data['friends'] = $friends;
-			// $data['request'] = $request;
+			$data['friends'] = $friends;
+			$data['requests'] = $requests;
 
 			web_inner_view('web/dashboard',$data);
 		 }
@@ -80,6 +80,18 @@ class Home extends CI_Controller {
 		 	redirect('web/login');
 		 }
 		
+	}
+
+	public function alluserdata(){
+		$data = array();
+		$uid = $_SESSION['userdetails']['uid'];
+		$post = $this->User->getAllPost($uid);
+		$friends = $this->User->getAllfriends($uid);
+		$requests = $this->User->getAllRequest($uid);
+		$data['post'] = $post;
+		$data['friends'] = $friends;
+		$data['requests'] = $requests;
+		echo json_encode($data);
 	}
 
 	public function register(){
@@ -252,6 +264,55 @@ class Home extends CI_Controller {
 		//echo "<pre>";print_r($userData);die;
 		web_inner_view('web/userinfo',$data);
 	}
+
+	public function submitUserinfo(){
+		$data = array();
+		$returnArr = array();
+		$uid = $this->input->post('uid');
+		$fullname = $this->User->enbdnew_encrypt($_POST['fullname']);
+		$aboutme = $this->User->enbdnew_encrypt($_POST['aboutme']);
+		$location = $this->User->enbdnew_encrypt($_POST['location']);
+		$workingat = $this->User->enbdnew_encrypt($_POST['workingat']);
+		$relationship = $this->input->post('relationship');
+
+		$data['uid'] = $uid;
+		$data['fullname'] = $fullname;
+		$data['aboutme'] = $aboutme;
+		$data['location'] = $location;
+		$data['workingat'] = $workingat;
+		$data['relationship'] = $relationship;
+		// $data['createdat'] = date('Y-m-d');
+		// $data['modifiedat'] = date('Y-m-d');
+
+		$result = $this->User->saveEdituserData($data);
+
+		if($result == true){
+			$returnArr['error_code'] = 200;
+			$returnArr['error_msg'] = "User Edited Successfully.";
+		}
+		else{
+			$returnArr['error_code'] = 100;
+			$returnArr['error_msg'] = "No new Changes.";
+		}
+
+		echo json_encode($returnArr);
+	}
+
+	public function chat(){
+		$data = array();
+		$data['title'] = 'Chat';
+		web_inner_view('web/chat',$data);	
+	}
+
+	public function getallfriendlist(){
+		$data = array();
+		$uid = $_SESSION['userdetails']['uid'];
+		$people = $this->User->getFriends($uid);
+		// echo "<pre>";print_r($people);die;
+		$data['peoples'] = $people;
+		echo json_encode($data);
+	}
+
 
 	public function logout(){
 		session_destroy();

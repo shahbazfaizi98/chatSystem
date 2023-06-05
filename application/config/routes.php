@@ -62,9 +62,13 @@ $route['web/get-people'] = 'home/peopleyoumayknow';
 $route['web/save-friend'] = 'home/saveFriendUser';
 $route['web/get-post'] = 'home/post';
 $route['web/userinfo'] = 'home/userinfo';
+$route['web/submitUserinfo'] = 'home/submitUserinfo';
+$route['web/get-all-user-data'] = 'home/alluserdata';
 
 $route['web/check-email'] = 'home/checkEmail';
 $route['web/check-username'] = 'home/checkUsername';
 $route['web/check-referralcode'] = 'home/checkReferralCode';
 $route['web/profile'] = 'home/profile';
+$route['web/chat'] = 'home/chat';
+$route['web/friend-list'] = 'home/getallfriendlist';
 $route['web/logout'] = 'home/logout';

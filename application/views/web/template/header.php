@@ -59,19 +59,19 @@
                         <div>
                             <a href="#">
                                 <strong>Post</strong>
-                                <div><?php echo $post['total'];?></div>
+                                <div><span id="userpostdata"></span></div>
                             </a>
                         </div>
                         <div>
                             <a href="#">
-                                <strong>Followers</strong>
-                                <div> 1,230</div>
+                                <strong>Friends</strong>
+                                <div><span id="userfrienddata"></span></div>
                             </a>
                         </div>
                         <div>
                             <a href="#">
-                                <strong>Friend Request</strong>
-                                <div> 2,430</div>
+                                <strong>Requests</strong>
+                                <div><span id="userrequestdata"></span></div>
                             </a>
                         </div>
                     </div>
@@ -97,7 +97,7 @@
                             <span> Explore </span> </a>
                     </li>
                     <li>
-                        <a href="chat.html">
+                        <a href="chat">
                             <i class="uil-location-arrow"></i>
                             <span> Messages </span> <span class="nav-tag"> 3</span> </a>
                     </li>

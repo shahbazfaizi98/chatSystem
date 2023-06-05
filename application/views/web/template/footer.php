@@ -2,7 +2,13 @@
 
     </div>
 
-
+    <script>
+    $(document).ready(function () {
+        //console.log("document loaded");
+        dataofalluser();
+        //load_more_posts();
+    });
+    </script>
 
     <!-- Story modal -->
     <div id="story-modal" class="uk-modal-container" uk-modal>

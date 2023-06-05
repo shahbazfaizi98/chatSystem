@@ -131,6 +131,58 @@ class User extends CI_Model {
       return $data;
     }
 
+    public function getAllfriends($uid){
+      $this->db->Select("count(fid) as totalfriends");
+      $this->db->where('uid',$uid);
+      $this->db->where('status',1);
+      $query = $this->db->get('tbl_friend');
+      $data = $query->row_array();
+      return $data;
+    }
+
+    public function getAllRequest($uid){
+      $this->db->Select("count(uid) as totalrequests");
+      $this->db->where('uid',$uid);
+      $this->db->where('status',0);
+      $query = $this->db->get('tbl_friend');
+      $data = $query->row_array();
+      return $data;
+    }
+
+    public function saveEdituserData($data){
+      $this->db->set("fullname",$data['fullname']);
+      $this->db->set("aboutme",$data['aboutme']);
+      $this->db->set("location",$data['location']);
+      $this->db->set("workingat",$data['workingat']);
+      $this->db->set("relationship",$data['relationship']);
+      // $this->db->set("createdat",$data['createdat']);
+      // $this->db->set("modifiedat",$data['modifiedat']);
+
+      $this->db->where("uid",$data['uid']);
+      $this->db->update('tbl_register');
+      $result = $this->db->affected_rows();
+      return $result;
+    }
+
+    public function getFriends($uid){
+      $sql = "SELECT ru.uid as friendid, ru.fullname  FROM `tbl_register` ru WHERE `ru`.`uid` != '".$uid."' AND ru.uid IN (SELECT fid from tbl_friend fu where fu.uid='".$uid."' AND fu.status=1 )";
+      $query = $this->db->query($sql);
+      $data = $query->result_array();
+      $d2 = array();
+      $returnArr = array();
+      if(count($data)>0){
+        foreach ($data as $key => $value) {
+          $fid = $value['friendid'];
+          $fname = $this->enbdnew_decrypt($value['fullname']);
+          $d2['friendid'] = $fid;
+          $d2['fullname'] = $fname;
+          array_push($returnArr, $d2);
+        }
+      }
+      return $returnArr;
+    }
+
+
     
     /* -------------------------Encrypt Decrypt Function Start ------------------------- */
 
