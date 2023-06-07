@@ -142,7 +142,7 @@ class User extends CI_Model {
 
     public function getAllRequest($uid){
       $this->db->Select("count(uid) as totalrequests");
-      $this->db->where('uid',$uid);
+      $this->db->where('fid',$uid);
       $this->db->where('status',0);
       $query = $this->db->get('tbl_friend');
       $data = $query->row_array();
@@ -182,7 +182,23 @@ class User extends CI_Model {
       return $returnArr;
     }
 
-
+    public function getPeoplesRequested($uid){
+      $sql = "SELECT ru.uid as friendid, ru.fullname From tbl_friend fr LEFT JOIN tbl_register ru ON ru.uid=fr.uid where fr.fid='".$uid."' and fr.status=0";
+      $query = $this->db->query($sql);
+      $data = $query->result_array();
+      $d2 = array();
+      $returnArr = array();
+      if(count($data)>0){
+        foreach ($data as $key => $value) {
+          $fid = $value['friendid'];
+          $fname = $this->enbdnew_decrypt($value['fullname']);
+          $d2['friendid'] = $fid;
+          $d2['fullname'] = $fname;
+          array_push($returnArr, $d2);
+        }
+      }
+      return $returnArr;
+    }
     
     /* -------------------------Encrypt Decrypt Function Start ------------------------- */
 

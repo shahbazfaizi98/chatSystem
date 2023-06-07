@@ -715,6 +715,55 @@ console.log("Check base------>",base_url);
     });
   }
 
+  function loadfriend_requested(){
+    var base_url = $('#baseurl').val();
+    var hid = $('#hid').val();
+    $("#allusers").html('');
+    $.ajax({
+      url: base_url + 'web/get-friend-request',
+      data:{
+        
+      },
+      dataType : "JSON",
+      beforeSend: function(){
+        $('#loader').show();
+      },
+      success :function(data){
+        $('#loader').hide();
+        var result = data.peoples;
+        //console.log(result);
+        if (result.length==0) {
+          $("#nouserfound").show();
+        }
+        
+        $.each(result, function (key, val) {
+          var output = '';
+          var friendid = val['friendid'];
+          var fullname = val['fullname'];
+          output += `<div class="flex items-center justify-between py-3">
+          <div class="flex flex-1 items-center space-x-4">
+              <a href="profile.html">
+                  <img src="`+base_url+`public/assets/images/avatars/avatar-2.jpg" class="bg-gray-200 rounded-full w-10 h-10">
+              </a>
+              <div class="flex flex-col">
+                  <span class="block capitalize font-semibold"> ${fullname} </span>
+                  <span class="block capitalize text-sm"> Australia </span>
+              </div>
+          </div>
+          
+          <button type="button" id=frnd`+friendid+` href="#" class="test btn border border-gray-200 font-semibold px-4 py-1 rounded-full hover:bg-pink-600 hover:text-white hover:border-pink-600 dark:border-gray-800" onclick="addFriendBtn('${hid}','${friendid}');"> Accept </button> &nbsp;&nbsp;&nbsp;
+
+          <button type="button" id=frnd`+friendid+` href="#" class="test btn border border-gray-200 font-semibold px-4 py-1 rounded-full hover:bg-pink-600 hover:text-white hover:border-pink-600 dark:border-gray-800" onclick="addFriendBtn('${hid}','${friendid}');"> Reject </button> &nbsp;&nbsp;&nbsp;
+
+          <button type="button" id=frnd`+friendid+` href="#" class="test btn border border-gray-200 font-semibold px-4 py-1 rounded-full hover:bg-pink-600 hover:text-white hover:border-pink-600 dark:border-gray-800" onclick="addFriendBtn('${hid}','${friendid}');"> Block </button>
+      </div>`;
+        $("#friendRequestedDiv").append(output);
+        //console.log("check output",output);
+        });
+      }
+    });
+  }
+
   
 
   

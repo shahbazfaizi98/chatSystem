@@ -71,4 +71,6 @@ $route['web/check-referralcode'] = 'home/checkReferralCode';
 $route['web/profile'] = 'home/profile';
 $route['web/chat'] = 'home/chat';
 $route['web/friend-list'] = 'home/getallfriendlist';
+$route['web/friend-request'] ='home/friendrequest';
+$route['web/get-friend-request'] = 'home/friendrequested';
 $route['web/logout'] = 'home/logout';

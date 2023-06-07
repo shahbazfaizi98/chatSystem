@@ -313,6 +313,19 @@ class Home extends CI_Controller {
 		echo json_encode($data);
 	}
 
+	public function friendrequest(){
+		$data = array();
+		$data['title'] = 'Friend Request';
+		web_inner_view('web/friendrequest',$data);	
+	}
+
+	public function friendrequested(){
+		$data = array();
+		$uid = $_SESSION['userdetails']['uid'];
+		$people = $this->User->getPeoplesRequested($uid);
+		$data['peoples'] = $people;
+		echo json_encode($data);
+	}
 
 	public function logout(){
 		session_destroy();
