@@ -231,9 +231,12 @@ class Home extends CI_Controller {
 		$returnArr = array();
 		$uid = $_POST['uid'];
 		$fid = $_POST['fid'];
+
 		$data['uid'] = $uid;
 		$data['fid'] = $fid;
+
 		$result = $this->User->saveFriend($data);
+
 		if($result == true){
 			$returnArr['error_code'] = 200;
 			$returnArr['error_msg'] = "Request Sent";
@@ -323,6 +326,41 @@ class Home extends CI_Controller {
 		$data = array();
 		$uid = $_SESSION['userdetails']['uid'];
 		$people = $this->User->getPeoplesRequested($uid);
+		$data['peoples'] = $people;
+		echo json_encode($data);
+	}
+
+	public function savefriendrequested(){
+		$data = array();
+		$returnArr = array();
+		$uid = $_POST['uid'];
+		$fid = $_POST['fid'];
+		
+		$data['uid'] = $uid;
+		$data['fid'] = $fid;
+		$result = $this->User->saveFriendRequest($data);
+		if($result == true){
+			$returnArr['error_code'] = 200;
+			$returnArr['error_msg'] = "Friend Request Accepted";
+		}
+		else{
+			$returnArr['error_code'] = 100;
+			$returnArr['error_msg'] = "Something went wrong.";
+		}
+
+		echo json_encode($returnArr);
+	}
+
+	public function friends(){
+		$data = array();
+		$data['title'] = 'Friends';
+		web_inner_view('web/friends',$data);	
+	}
+
+	public function getfriends(){
+		$data = array();
+		$uid = $_SESSION['userdetails']['uid'];
+		$people = $this->User->getFriendsList($uid);
 		$data['peoples'] = $people;
 		echo json_encode($data);
 	}

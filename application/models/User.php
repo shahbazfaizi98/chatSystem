@@ -199,6 +199,36 @@ class User extends CI_Model {
       }
       return $returnArr;
     }
+
+    public function saveFriendRequest($data) {
+			// return $this->db->insert("tbl_friend",$data);
+      $this->db->set("uid",$data['uid']);
+      $this->db->set("fid",$data['fid']);
+      $this->db->set('status',1);
+      $this->db->where("uid",$data['uid'] and "fid",$data['fid']);
+      // $this->db->where("fid",$data['fid']);
+      $this->db->update('tbl_friend');
+      $result = $this->db->affected_rows();
+      return $result; 
+		}
+
+    public function getFriendsList($uid){
+      $sql = "SELECT ru.uid as friendid, ru.fullname From tbl_friend fr LEFT JOIN tbl_register ru ON ru.uid=fr.uid where fr.fid='".$uid."' and fr.status=0";
+      $query = $this->db->query($sql);
+      $data = $query->result_array();
+      $d2 = array();
+      $returnArr = array();
+      if(count($data)>0){
+        foreach ($data as $key => $value) {
+          $fid = $value['friendid'];
+          $fname = $this->enbdnew_decrypt($value['fullname']);
+          $d2['friendid'] = $fid;
+          $d2['fullname'] = $fname;
+          array_push($returnArr, $d2);
+        }
+      }
+      return $returnArr;
+    }
     
     /* -------------------------Encrypt Decrypt Function Start ------------------------- */
 

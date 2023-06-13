@@ -57,19 +57,19 @@
                     </a>
                     <div class="flex justify-around w-full items-center text-center uk-link-reset text-gray-800 mt-6">
                         <div>
-                            <a href="#">
+                            <a href="dashboard">
                                 <strong>Post</strong>
                                 <div><span id="userpostdata"></span></div>
                             </a>
                         </div>
                         <div>
-                            <a href="#">
+                            <a href="friends">
                                 <strong>Friends</strong>
                                 <div><span id="userfrienddata"></span></div>
                             </a>
                         </div>
                         <div>
-                            <a href="#">
+                            <a href="friend-request">
                                 <strong>Requests</strong>
                                 <div><span id="userrequestdata"></span></div>
                             </a>

@@ -16,7 +16,7 @@
                         <div class="card-body">
                         <form action="#" name="userinfoForm" id="userinfoForm">
                     
-                    <input value="<?php echo $userdata['uid']; ?>" type="text" name="uid" id="uid" class="bg-gray-200 mb-2 shadow-none  dark:bg-gray-800" style="border: 1px solid #d3d5d8 !important;">
+                    <input value="<?php echo $userdata['uid']; ?>" type="hidden" name="uid" id="uid" class="bg-gray-200 mb-2 shadow-none  dark:bg-gray-800" style="border: 1px solid #d3d5d8 !important;">
                     <input value="<?php echo $this->User->enbdnew_decrypt($userdata['fullname']); ?>" type="text" name="fullname" id="fullname" class="bg-gray-200 mb-2 shadow-none  dark:bg-gray-800" style="border: 1px solid #d3d5d8 !important;" disabled>
                     <input value="<?php echo $this->User->enbdnew_decrypt($userdata['username']); ?>" type="text" name="username" id="username" class="bg-gray-200 mb-2 shadow-none  dark:bg-gray-800" style="border: 1px solid #d3d5d8 !important;" disabled>
                     <input value="<?php echo $this->User->enbdnew_decrypt($userdata['email']);?>" type="text" name="email" id="email" class="bg-gray-200 mb-2 shadow-none  dark:bg-gray-800" style="border: 1px solid #d3d5d8 !important;" disabled>

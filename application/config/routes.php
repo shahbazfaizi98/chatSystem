@@ -73,4 +73,7 @@ $route['web/chat'] = 'home/chat';
 $route['web/friend-list'] = 'home/getallfriendlist';
 $route['web/friend-request'] ='home/friendrequest';
 $route['web/get-friend-request'] = 'home/friendrequested';
+$route['web/save-friend-request'] = 'home/savefriendrequested';
+$route['web/friends'] ='home/friends';
+$route['web/get-friends'] ='home/getfriends';
 $route['web/logout'] = 'home/logout';

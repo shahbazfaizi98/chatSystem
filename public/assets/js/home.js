@@ -751,11 +751,11 @@ console.log("Check base------>",base_url);
               </div>
           </div>
           
-          <button type="button" id=frnd`+friendid+` href="#" class="test btn border border-gray-200 font-semibold px-4 py-1 rounded-full hover:bg-pink-600 hover:text-white hover:border-pink-600 dark:border-gray-800" onclick="addFriendBtn('${hid}','${friendid}');"> Accept </button> &nbsp;&nbsp;&nbsp;
+          <button type="button" id=frnd`+friendid+` href="#" class="test btn border border-gray-200 font-semibold px-4 py-1 rounded-full hover:bg-pink-600 hover:text-white hover:border-pink-600 dark:border-gray-800" style="background: green;" onclick="addFriendRequestBtn('${hid}','${friendid}');"> Accept </button> &nbsp;&nbsp;&nbsp;
 
-          <button type="button" id=frnd`+friendid+` href="#" class="test btn border border-gray-200 font-semibold px-4 py-1 rounded-full hover:bg-pink-600 hover:text-white hover:border-pink-600 dark:border-gray-800" onclick="addFriendBtn('${hid}','${friendid}');"> Reject </button> &nbsp;&nbsp;&nbsp;
+          <button type="button" id=frnd`+friendid+` href="#" class="test btn border border-gray-200 font-semibold px-4 py-1 rounded-full hover:bg-pink-600 hover:text-black hover:border-pink-600 dark:border-gray-800" style="background: yellow;" onclick="addFriendRequestBtn('${hid}','${friendid}');"> Reject </button> &nbsp;&nbsp;&nbsp;
 
-          <button type="button" id=frnd`+friendid+` href="#" class="test btn border border-gray-200 font-semibold px-4 py-1 rounded-full hover:bg-pink-600 hover:text-white hover:border-pink-600 dark:border-gray-800" onclick="addFriendBtn('${hid}','${friendid}');"> Block </button>
+          <button type="button" id=frnd`+friendid+` href="#" class="test btn border border-gray-200 font-semibold px-4 py-1 rounded-full hover:bg-pink-600 hover:text-white hover:border-pink-600 dark:border-gray-800" style="background: red;" onclick="addFriendRequestBtn('${hid}','${friendid}');"> Block </button>
       </div>`;
         $("#friendRequestedDiv").append(output);
         //console.log("check output",output);
@@ -764,6 +764,88 @@ console.log("Check base------>",base_url);
     });
   }
 
-  
+  function addFriendRequestBtn(uid,fid){
+
+    //const div = document.querySelector('.test');
+    // console.log("Ceck div----",div);return false;
+    // div.addEventListener('click', () => {
+    //   div.classList.add('hidden');
+    // })
+    //console.log("Check--------------------->",div);
+    var uid = uid;
+    var fid = fid;
+    var status = status
+    if(status == 1){
+
+    }
+    $.ajax({
+      type: 'post',
+      url: base_url + 'web/save-friend-request',
+      dataType: 'json',
+      data: {uid: uid, fid: fid},
+      success: function (response){
+         if(response.error_code==200){
+          //div.remove();
+          // setTimeout(function () {
+          //   $("#allusers").html('');
+          //   loadmore_items();
+          // }, 1000);
+          alert(response.error_msg);
+          window.location.reload();
+        }
+        else{
+          alert(response.error_msg);
+          window.location.reload();
+        }
+      }
+    });
+  }
+
+  function loadfriends_list(){
+    var base_url = $('#baseurl').val();
+    var hid = $('#hid').val();
+    $("#allusers").html('');
+    $.ajax({
+      url: base_url + 'web/get-friends',
+      data:{
+        
+      },
+      dataType : "JSON",
+      beforeSend: function(){
+        $('#loader').show();
+      },
+      success :function(data){
+        $('#loader').hide();
+        var result = data.peoples;
+        //console.log(result);
+        if (result.length==0) {
+          $("#nofriends").show();
+        }
+        
+        $.each(result, function (key, val) {
+          var output = '';
+          var friendid = val['friendid'];
+          var fullname = val['fullname'];
+          output += `<div class="flex items-center justify-between py-3">
+          <div class="flex flex-1 items-center space-x-4">
+              <a href="profile.html">
+                  <img src="`+base_url+`public/assets/images/avatars/avatar-2.jpg" class="bg-gray-200 rounded-full w-10 h-10">
+              </a>
+              <div class="flex flex-col">
+                  <span class="block capitalize font-semibold"> ${fullname} </span>
+                  <span class="block capitalize text-sm"> Australia </span>
+              </div>
+          </div>
+          
+          <button type="button" id=frnd`+friendid+` href="#" class="test btn border border-gray-200 font-semibold px-4 py-1 rounded-full hover:bg-pink-600 hover:text-white hover:border-pink-600 dark:border-gray-800" style="background: green;" onclick="addFriendRequestBtn('${hid}','${friendid}');"> Remove </button> &nbsp;&nbsp;&nbsp;
+
+          <button type="button" id=frnd`+friendid+` href="#" class="test btn border border-gray-200 font-semibold px-4 py-1 rounded-full hover:bg-pink-600 hover:text-white hover:border-pink-600 dark:border-gray-800" style="background: red;" onclick="addFriendRequestBtn('${hid}','${friendid}');"> Block </button>
+      </div>`;
+        $("#friendsDiv").append(output);
+        //console.log("check output",output);
+        });
+      }
+    });
+  }
 
   
