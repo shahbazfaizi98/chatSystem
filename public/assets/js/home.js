@@ -751,11 +751,11 @@ console.log("Check base------>",base_url);
               </div>
           </div>
           
-          <button type="button" id=frnd`+friendid+` href="#" class="test btn border border-gray-200 font-semibold px-4 py-1 rounded-full hover:bg-pink-600 hover:text-white hover:border-pink-600 dark:border-gray-800" style="background: green;" onclick="addFriendRequestBtn('${hid}','${friendid}');"> Accept </button> &nbsp;&nbsp;&nbsp;
+          <button type="button" id=frnd`+friendid+` href="#" class="test btn border border-gray-200 font-semibold px-4 py-1 rounded-full hover:bg-pink-600 hover:text-white hover:border-pink-600 dark:border-gray-800" style="background: #2ea12ec7;color:#fff;" onclick="addFriendRequestBtn('${hid}','${friendid}','1');"> Accept </button> &nbsp;&nbsp;&nbsp;
 
-          <button type="button" id=frnd`+friendid+` href="#" class="test btn border border-gray-200 font-semibold px-4 py-1 rounded-full hover:bg-pink-600 hover:text-black hover:border-pink-600 dark:border-gray-800" style="background: yellow;" onclick="addFriendRequestBtn('${hid}','${friendid}');"> Reject </button> &nbsp;&nbsp;&nbsp;
+          <button type="button" id=frnd`+friendid+` href="#" class="test btn border border-gray-200 font-semibold px-4 py-1 rounded-full hover:bg-pink-600 hover:text-black hover:border-pink-600 dark:border-gray-800" style="background: #1776edd1;color:#fff;" onclick="addFriendRequestBtn('${hid}','${friendid}','3');"> Reject </button> &nbsp;&nbsp;&nbsp;
 
-          <button type="button" id=frnd`+friendid+` href="#" class="test btn border border-gray-200 font-semibold px-4 py-1 rounded-full hover:bg-pink-600 hover:text-white hover:border-pink-600 dark:border-gray-800" style="background: red;" onclick="addFriendRequestBtn('${hid}','${friendid}');"> Block </button>
+          <button type="button" id=frnd`+friendid+` href="#" class="test btn border border-gray-200 font-semibold px-4 py-1 rounded-full hover:bg-pink-600 hover:text-white hover:border-pink-600 dark:border-gray-800" style="background: #e31e1ed1;color:#fff;" onclick="addFriendRequestBtn('${hid}','${friendid}','2');"> Block </button>
       </div>`;
         $("#friendRequestedDiv").append(output);
         //console.log("check output",output);
@@ -764,7 +764,7 @@ console.log("Check base------>",base_url);
     });
   }
 
-  function addFriendRequestBtn(uid,fid){
+  function addFriendRequestBtn(uid,fid,flag){
 
     //const div = document.querySelector('.test');
     // console.log("Ceck div----",div);return false;
@@ -774,23 +774,17 @@ console.log("Check base------>",base_url);
     //console.log("Check--------------------->",div);
     var uid = uid;
     var fid = fid;
+    var flag = flag;
     var status = status
-    if(status == 1){
-
-    }
+  
     $.ajax({
       type: 'post',
       url: base_url + 'web/save-friend-request',
       dataType: 'json',
-      data: {uid: uid, fid: fid},
+      data: {uid: uid, fid: fid,flag:flag},
       success: function (response){
          if(response.error_code==200){
-          //div.remove();
-          // setTimeout(function () {
-          //   $("#allusers").html('');
-          //   loadmore_items();
-          // }, 1000);
-          alert(response.error_msg);
+          //loadfriend_requested();
           window.location.reload();
         }
         else{

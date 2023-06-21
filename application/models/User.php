@@ -183,7 +183,7 @@ class User extends CI_Model {
     }
 
     public function getPeoplesRequested($uid){
-      $sql = "SELECT ru.uid as friendid, ru.fullname From tbl_friend fr LEFT JOIN tbl_register ru ON ru.uid=fr.uid where fr.fid='".$uid."' and fr.status=0";
+      $sql = "SELECT ru.uid as friendid,ru.fullname FROM `tbl_register` ru LEFT JOIN tbl_friend fr ON ru.uid = fr.uid where fr.fid= '".$uid."' and fr.status=0";
       $query = $this->db->query($sql);
       $data = $query->result_array();
       $d2 = array();
@@ -201,16 +201,24 @@ class User extends CI_Model {
     }
 
     public function saveFriendRequest($data) {
-			// return $this->db->insert("tbl_friend",$data);
-      $this->db->set("uid",$data['uid']);
-      $this->db->set("fid",$data['fid']);
-      $this->db->set('status',1);
-      $this->db->where("uid",$data['uid'] and "fid",$data['fid']);
+      $this->db->set('status',$data['flag']);
+      $this->db->where("fid",$data['uid']);
+      $this->db->where("uid",$data['fid']);
       // $this->db->where("fid",$data['fid']);
       $this->db->update('tbl_friend');
       $result = $this->db->affected_rows();
       return $result; 
 		}
+
+    public function deleteFriendRequest($data){
+      // $this->db->set('status',$data['flag']);
+      $this->db->where("fid",$data['uid']);
+      $this->db->where("uid",$data['fid']);
+      // $this->db->where("fid",$data['fid']);
+      $this->db->delete('tbl_friend');
+      $result = $this->db->affected_rows();
+      return $result; 
+    }
 
     public function getFriendsList($uid){
       $sql = "SELECT ru.uid as friendid, ru.fullname From tbl_friend fr LEFT JOIN tbl_register ru ON ru.uid=fr.uid where fr.fid='".$uid."' and fr.status=0";

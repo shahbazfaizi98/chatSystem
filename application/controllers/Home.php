@@ -323,6 +323,7 @@ class Home extends CI_Controller {
 	}
 
 	public function friendrequested(){
+		//echo "<pre>";print_r($_SESSION);die;
 		$data = array();
 		$uid = $_SESSION['userdetails']['uid'];
 		$people = $this->User->getPeoplesRequested($uid);
@@ -335,10 +336,19 @@ class Home extends CI_Controller {
 		$returnArr = array();
 		$uid = $_POST['uid'];
 		$fid = $_POST['fid'];
-		
+		$flag = $_POST['flag'];
+
 		$data['uid'] = $uid;
 		$data['fid'] = $fid;
-		$result = $this->User->saveFriendRequest($data);
+		$data['flag'] = $flag;
+
+		if($flag == 3){
+			$result = $this->User->deleteFriendRequest($data);
+		}
+		else{
+			$result = $this->User->saveFriendRequest($data);
+		}
+		//echo "<pre>";print_r($result);die;
 		if($result == true){
 			$returnArr['error_code'] = 200;
 			$returnArr['error_msg'] = "Friend Request Accepted";
