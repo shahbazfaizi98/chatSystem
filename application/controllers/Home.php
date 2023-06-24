@@ -375,6 +375,39 @@ class Home extends CI_Controller {
 		echo json_encode($data);
 	}
 
+	public function savefriends(){
+		$data = array();
+		$returnArr = array();
+		$uid = $_POST['uid'];
+		$fid = $_POST['fid'];
+		$flag = $_POST['flag'];
+
+		$data['uid'] = $uid;
+		$data['fid'] = $fid;
+		$data['flag'] = $flag;
+		//echo "<pre>"; print_r($data);die;
+		if($flag == 2){
+			$result = $this->User->removeFriends($data);
+		}
+		else if($flag == 3){
+			$result = $this->User->blockFriends($data);
+		}
+		else{
+			$result = $this->User->savenewFriend($data);
+		}
+		//echo "<pre>";print_r($result);die;
+		if($result == true){
+			$returnArr['error_code'] = 200;
+			$returnArr['error_msg'] = "Friend Accepted";
+		}
+		else{
+			$returnArr['error_code'] = 100;
+			$returnArr['error_msg'] = "Something went wrong.";
+		}
+
+		echo json_encode($returnArr);
+	}
+
 	public function logout(){
 		session_destroy();
 		redirect(base_url());

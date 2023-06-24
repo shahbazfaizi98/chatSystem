@@ -784,7 +784,7 @@ console.log("Check base------>",base_url);
       data: {uid: uid, fid: fid,flag:flag},
       success: function (response){
          if(response.error_code==200){
-          //loadfriend_requested();
+          dataofalluser();
           window.location.reload();
         }
         else{
@@ -831,9 +831,9 @@ console.log("Check base------>",base_url);
               </div>
           </div>
           
-          <button type="button" id=frnd`+friendid+` href="#" class="test btn border border-gray-200 font-semibold px-4 py-1 rounded-full hover:bg-pink-600 hover:text-white hover:border-pink-600 dark:border-gray-800" style="background: green;" onclick="addFriendRequestBtn('${hid}','${friendid}');"> Remove </button> &nbsp;&nbsp;&nbsp;
+          <button type="button" id=frnd`+friendid+` href="#" class="test btn border border-gray-200 font-semibold px-4 py-1 rounded-full hover:bg-pink-600 hover:text-white hover:border-pink-600 dark:border-gray-800" style="background: #2ea12ec7;color:#fff;" onclick="addFriendsBtn('${hid}','${friendid}','2');"> Remove </button> &nbsp;&nbsp;&nbsp;
 
-          <button type="button" id=frnd`+friendid+` href="#" class="test btn border border-gray-200 font-semibold px-4 py-1 rounded-full hover:bg-pink-600 hover:text-white hover:border-pink-600 dark:border-gray-800" style="background: red;" onclick="addFriendRequestBtn('${hid}','${friendid}');"> Block </button>
+          <button type="button" id=frnd`+friendid+` href="#" class="test btn border border-gray-200 font-semibold px-4 py-1 rounded-full hover:bg-pink-600 hover:text-white hover:border-pink-600 dark:border-gray-800" style="background: #e31e1ed1;color:#fff;" onclick="addFriendsBtn('${hid}','${friendid}','3');"> Block </button>
       </div>`;
         $("#friendsDiv").append(output);
         //console.log("check output",output);
@@ -842,4 +842,32 @@ console.log("Check base------>",base_url);
     });
   }
 
+  function addFriendsBtn(uid,fid,flag){
+
+    //const div = document.querySelector('.test');
+    // console.log("Ceck div----",div);return false;
+    // div.addEventListener('click', () => {
+    //   div.classList.add('hidden');
+    // })
+    //console.log("Check--------------------->",div);
+    var uid = uid;
+    var fid = fid;
+    var flag = flag;
   
+    $.ajax({
+      type: 'post',
+      url: base_url + 'web/save-friends',
+      dataType: 'json',
+      data: {uid: uid, fid: fid,flag:flag},
+      success: function (response){
+         if(response.error_code==200){
+          //loadfriend_requested();
+          window.location.reload();
+        }
+        else{
+          alert(response.error_msg);
+          window.location.reload();
+        }
+      }
+    });
+  }  

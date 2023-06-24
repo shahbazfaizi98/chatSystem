@@ -133,7 +133,7 @@ class User extends CI_Model {
 
     public function getAllfriends($uid){
       $this->db->Select("count(fid) as totalfriends");
-      $this->db->where('uid',$uid);
+      $this->db->where('fid',$uid);
       $this->db->where('status',1);
       $query = $this->db->get('tbl_friend');
       $data = $query->row_array();
@@ -221,7 +221,7 @@ class User extends CI_Model {
     }
 
     public function getFriendsList($uid){
-      $sql = "SELECT ru.uid as friendid, ru.fullname From tbl_friend fr LEFT JOIN tbl_register ru ON ru.uid=fr.uid where fr.fid='".$uid."' and fr.status=0";
+      $sql = "SELECT ru.uid as friendid, ru.fullname From tbl_friend fr LEFT JOIN tbl_register ru ON ru.uid=fr.uid where fr.fid='".$uid."' and fr.status=1";
       $query = $this->db->query($sql);
       $data = $query->result_array();
       $d2 = array();
@@ -236,6 +236,35 @@ class User extends CI_Model {
         }
       }
       return $returnArr;
+    }
+
+    public function savenewFriend($data) {
+      $this->db->set('status',$data['flag']);
+      $this->db->where("fid",$data['uid']);
+      $this->db->where("uid",$data['fid']);
+      // $this->db->where("fid",$data['fid']);
+      $this->db->update('tbl_friend');
+      $result = $this->db->affected_rows();
+      return $result; 
+		}
+
+    public function blockFriends($data) {
+      $this->db->set('status',$data['flag']);
+      $this->db->where("fid",$data['uid']);
+      $this->db->where("uid",$data['fid']);
+      // $this->db->where("fid",$data['fid']);
+      $this->db->update('tbl_friend');
+      $result = $this->db->affected_rows();
+      return $result; 
+    }
+
+
+    public function removeFriends($data){
+      $this->db->where("fid",$data['uid']);
+      $this->db->where("uid",$data['fid']);
+      $this->db->delete('tbl_friend');
+      $result = $this->db->affected_rows();
+      return $result; 
     }
     
     /* -------------------------Encrypt Decrypt Function Start ------------------------- */
