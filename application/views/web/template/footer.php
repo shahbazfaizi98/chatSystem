@@ -99,6 +99,47 @@
     </div>
 
 
+    <div id="feed-modal" class="uk-modal" uk-modal>
+        <div class="uk-modal-dialog feed-modal">
+            <button class="uk-modal-close-default lg:-mt-9 lg:-mr-9 -mt-5 -mr-5 shadow-lg bg-white rounded-full p-4 transition dark:bg-gray-600 dark:text-white" type="button" uk-close></button>
+                <div class="flex-1 bg-white dark:bg-gray-900 dark:text-gray-100">
+                
+                    <!-- post header-->
+                    <div class="border-b flex items-center justify-between px-5 py-3 dark:border-gray-600">
+                        <div class="flex flex-1 items-center space-x-4">
+                            <a href="#">
+                                <div class="bg-gradient-to-tr from-yellow-600 to-pink-600 p-0.5 rounded-full">
+                                    <img src="assets/images/avatars/avatar-2.jpg"
+                                        class="bg-gray-200 border border-white rounded-full w-8 h-8">
+                                </div>
+                            </a>
+                            <span class="block text-lg font-semibold"> Johnson smith </span>
+                        </div>
+                        <a href="#"> 
+                            <i  class="icon-feather-more-horizontal text-2xl rounded-full p-2 transition -mr-1"></i>
+                        </a>
+                    </div>
+                    <div class="story-content p-4" data-simplebar>
+
+                        <p> Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. </p>
+
+
+                    </div>
+                    <div class="p-3 border-t dark:border-gray-600">
+                        <div class="bg-gray-200 dark:bg-gray-700 rounded-full rounded-md relative">
+                            <input type="text" placeholder="Add your Comment.." class="bg-transparent max-h-8 shadow-none">
+                            <div class="absolute bottom-0 flex h-full items-center right-0 right-3 text-xl space-x-2">
+                                <a href="#"> <i class="uil-image"></i></a>
+                                <a href="#"> <i class="uil-video"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+        </div>
+    </div>
+
 
     <!-- <script>
         
@@ -136,7 +177,7 @@
     
         })(window, document);
     </script> -->
-    <input type="text" id="hid" name="hid" value="<?php echo $_SESSION['userdetails']['uid'];?>">
+    <input type="hidden" id="hid" name="hid" value="<?php echo $_SESSION['userdetails']['uid'];?>">
     <input type="hidden" name="baseurl" value="<?= BASE_URL ?>" id="baseurl" ?>">
     <!-- JAVASCRIPT -->
     

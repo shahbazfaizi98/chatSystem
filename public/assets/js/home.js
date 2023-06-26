@@ -831,6 +831,8 @@ console.log("Check base------>",base_url);
               </div>
           </div>
           
+          <button type="button" id=frnd`+friendid+` href="#" class="test btn border border-gray-200 font-semibold px-4 py-1 rounded-full hover:bg-pink-600 hover:text-white hover:border-pink-600 dark:border-gray-800" style="background: #1776edd1;color:#fff;" onclick="addFriendsBtn('${hid}','${friendid}','4');"> Send Message </button> &nbsp;&nbsp;&nbsp;
+
           <button type="button" id=frnd`+friendid+` href="#" class="test btn border border-gray-200 font-semibold px-4 py-1 rounded-full hover:bg-pink-600 hover:text-white hover:border-pink-600 dark:border-gray-800" style="background: #2ea12ec7;color:#fff;" onclick="addFriendsBtn('${hid}','${friendid}','2');"> Remove </button> &nbsp;&nbsp;&nbsp;
 
           <button type="button" id=frnd`+friendid+` href="#" class="test btn border border-gray-200 font-semibold px-4 py-1 rounded-full hover:bg-pink-600 hover:text-white hover:border-pink-600 dark:border-gray-800" style="background: #e31e1ed1;color:#fff;" onclick="addFriendsBtn('${hid}','${friendid}','3');"> Block </button>
