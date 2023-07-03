@@ -26,6 +26,7 @@
     <link rel="stylesheet" href="<?=ASSET_WEB_URL?>assets/css/tailwind.css">
     <script>const BASE_URL="<?=ASSET_WEB_URL?>"</script>
     <script src="<?=ASSET_WEB_URL?>assets/js/jquery-3.3.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
 </head>
 
 <body>

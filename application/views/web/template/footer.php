@@ -121,20 +121,33 @@
                     </div>
                     <div class="story-content p-4" data-simplebar>
 
-                        <p> Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. </p>
+                        <form class="uk-form-stacked" enctype='multipart/form-data' method="POST">
+
+                            <div class="uk-margin">
+                                <label class="uk-form-label" for="form-stacked-text">Title</label>
+                                <div class="uk-form-controls">
+                                    <input class="uk-input" id="postTitle" name="postTitle" type="text" placeholder="Enter Title">
+                                </div>
+                            </div>
+
+                            <div class="uk-margin">
+                                <label class="uk-form-label" for="form-stacked-select">Select</label>
+                                <div class="uk-form-controls">
+                                    <div uk-form-custom="target: true">
+                                        <input type="file" aria-label="Custom controls" id="sortpicture">
+                                        <input class="uk-input" type="text" placeholder="Select file" aria-label="Custom controls" disabled>
+                                    </div>
+                                </div>
+                            </div>
+
+                        
 
 
                     </div>
                     <div class="p-3 border-t dark:border-gray-600">
-                        <div class="bg-gray-200 dark:bg-gray-700 rounded-full rounded-md relative">
-                            <input type="text" placeholder="Add your Comment.." class="bg-transparent max-h-8 shadow-none">
-                            <div class="absolute bottom-0 flex h-full items-center right-0 right-3 text-xl space-x-2">
-                                <a href="#"> <i class="uil-image"></i></a>
-                                <a href="#"> <i class="uil-video"></i></a>
-                            </div>
-                        </div>
+                    <button type="button" id="uploadPost" href="#" class="uk-align-center test btn border border-gray-200 font-semibold px-4 py-1 rounded-full hover:bg-pink-600 hover:text-white hover:border-pink-600 dark:border-gray-800"> Submit </button>
                     </div>
-
+                    </form>
                 </div>
 
         </div>

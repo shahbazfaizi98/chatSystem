@@ -92,7 +92,7 @@ class User extends CI_Model {
 
     public function getPosts($uid,$offset){
       $limit = 10;
-      $sql = "SELECT * FROM tbl_post LIMIT $limit OFFSET $offset";  
+      $sql = "SELECT * FROM tbl_post ORDER BY pid DESC LIMIT $limit OFFSET $offset";  
       $query = $this->db->query($sql);
       $data = $query->result_array();
       $d2 = array();
@@ -265,6 +265,15 @@ class User extends CI_Model {
       $this->db->delete('tbl_friend');
       $result = $this->db->affected_rows();
       return $result; 
+    }
+
+    public function SavePostData($title,$fileName,$uid){
+      $data = array();
+      $data['uid'] = $uid;
+      $data['title'] = $title;
+      $data['image'] = $fileName;
+      $data['status'] = 1;
+      return $this->db->insert("tbl_post",$data);
     }
     
     /* -------------------------Encrypt Decrypt Function Start ------------------------- */

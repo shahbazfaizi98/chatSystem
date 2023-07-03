@@ -1,6 +1,6 @@
 var base_url = $('#baseurl').val();
 var asset_url = $('#base_url').attr('asset');
-console.log("Check base------>",base_url);
+
 
     $('#vendor_price').keypress(function(event) {
         if ((event.which != 46 || $(this).val().indexOf('.') != -1) && (event.which < 48 || event.which > 57)) {
@@ -35,40 +35,7 @@ console.log("Check base------>",base_url);
 
         });
     }
-  });  
-
-  // $('#login-btn').click(function(){
-  //   $('#loginForm').validate();
-  //   if($('#loginForm').valid()){
-  //       var loginid = $('#username').val();
-  //       var password = $('#password').val();
-  //       var usertype = $('#usertype').val();
-  //       $.ajax({
-  //       type: 'post',
-  //       url: base_url + 'web/login',
-  //       dataType: 'json',
-  //       beforeSend: function(){
-  //           $('#loader').show();
-  //           $('#final-book-btn').prop('disabled', true);
-  //       },
-  //       data: {loginid: loginid, password: password, usertype: usertype},
-  //       success: function (response){
-  //           $('#loader').hide();
-  //           if (response.error_code == 200){
-  //           $('#login-form-error').addClass(response.error_class).html(response.error_msg).show();
-  //           setTimeout(function(){ $('#login-form-error').removeClass(response.error_class).html('');
-  //           window.location.href =base_url+"web/dashboard"  
-  //           }, 3000);
-  //       } else if (response.error_code == 100) {
-  //           $('#login-btn').prop('disabled', false);
-  //           $('#login-form-error').addClass(response.error_class).html(response.error_msg).show();
-  //           setTimeout(function(){ $('#login-form-error').removeClass(response.error_class).html(''); }, 3000);
-  //       }
-  //       }
-
-  //       });
-  //   }
-  // });
+  });
 
   $('#loginBtn').click(function(){
     $('#loginForm').validate();
@@ -90,14 +57,32 @@ console.log("Check base------>",base_url);
           $('#loader').hide();
             if (response.error_code == 200){
               $('#login-form-error').addClass(response.error_class).html(response.error_msg).show();
-              setTimeout(function(){ $('#login-form-error').removeClass(response.error_class).html('');
-              window.location.href =base_url+"web/dashboard"  
-              }, 3000);
+              swal({
+                position: "top-end",
+                type: "success",
+                icon: "success",
+                title: response.error_msg,
+                showConfirmButton: true,
+                timer: 5000
+              }).then((yesdashBoard) => {
+                if (yesdashBoard) {
+                 window.location.reload();   
+                }
+            });
             }
             else if (response.error_code == 100) {
-              $('#login-btn').prop('disabled', false);
-              $('#login-form-error').addClass(response.error_class).html(response.error_msg).show();
-              setTimeout(function(){ $('#login-form-error').removeClass(response.error_class).html(''); }, 3000);
+              swal({
+                position: "top-end",
+                type: "danger",
+                icon: "error",
+                title: response.error_msg,
+                showConfirmButton: true,
+                timer: 5000
+              }).then((yesdashBoard) => {
+                if (yesdashBoard) {
+                 window.location.reload();   
+                }
+            });
             }
         }
       });
@@ -315,10 +300,10 @@ console.log("Check base------>",base_url);
               <div class="flex flex-1 items-center space-x-4">
                   <a href="#">
                       <div class="bg-gradient-to-tr from-yellow-600 to-pink-600 p-0.5 rounded-full">  
-                          <img src="<?=ASSET_WEB_URL?>assets/images/avatars/avatar-2.jpg" class="bg-gray-200 border border-white rounded-full w-8 h-8">
+                          <img src="`+base_url+val['image']+`" class="bg-gray-200 border border-white rounded-full w-8 h-8">
                       </div>
                   </a>
-                  <span class="block capitalize font-semibold dark:text-gray-100"> Johnson smith </span>
+                  <span class="block capitalize font-semibold dark:text-gray-100"> `+val['title']+` </span>
               </div>
             <div>
               <a href="#"> <i class="icon-feather-more-horizontal text-2xl hover:bg-gray-200 rounded-full p-2 transition -mr-1 dark:hover:bg-gray-700"></i> </a>
@@ -360,8 +345,8 @@ console.log("Check base------>",base_url);
           </div>
 
           <div uk-lightbox>
-              <a href="<?=ASSET_WEB_URL?>assets/images/post/img4.jpg">  
-                  <img src="<?=ASSET_WEB_URL?>assets/images/post/img4.jpg" alt="">
+              <a href="`+base_url+val['image']+`">  
+                  <img src="`+base_url+val['image']+`" alt="">
               </a>
           </div>
           
@@ -486,7 +471,7 @@ console.log("Check base------>",base_url);
               <div class="flex flex-1 items-center space-x-4">
                   <a href="#">
                       <div class="bg-gradient-to-tr from-yellow-600 to-pink-600 p-0.5 rounded-full">  
-                          <img src="<?=ASSET_WEB_URL?>assets/images/avatars/avatar-2.jpg" class="bg-gray-200 border border-white rounded-full w-8 h-8">
+                          <img src="`+base_url+val['image']+`" class="bg-gray-200 border border-white rounded-full w-8 h-8">
                       </div>
                   </a>
                   <span class="block capitalize font-semibold dark:text-gray-100"> Johnson smith </span>
@@ -531,8 +516,8 @@ console.log("Check base------>",base_url);
           </div>
 
           <div uk-lightbox>
-              <a href="<?=ASSET_WEB_URL?>assets/images/post/img4.jpg">  
-                  <img src="<?=ASSET_WEB_URL?>assets/images/post/img4.jpg" alt="">
+              <a href="`+base_url+val['image']+`">  
+                  <img src="`+base_url+val['image']+`" alt="">
               </a>
           </div>
           
@@ -616,6 +601,67 @@ console.log("Check base------>",base_url);
     });
   }
 
+
+  $('#uploadPost').on('click', function() {
+    var file_data = $('#sortpicture').prop('files')[0];
+    var title = $('#postTitle').val();   
+    var form_data = new FormData();                  
+    form_data.append('file', file_data);
+    form_data.append('title', title);
+    console.log(form_data);                             
+    $.ajax({
+        url: base_url + 'web/submit-post',// <-- point to server-side PHP script 
+        dataType: 'JSON',  // <-- what to expect back from the PHP script, if anything
+        cache: false,
+        contentType: false,
+        processData: false,
+        data: form_data,                         
+        type: 'post',
+        success: function(response){
+          if(response.error_code == 200){
+            swal({
+              position: "top-end",
+              type: "success",
+              icon: "success",
+              title: response.error_msg,
+              showConfirmButton: true,
+              timer: 5000
+            }).then((yesdashBoard) => {
+              if (yesdashBoard) {
+               window.location.reload();   
+              }
+          });
+          }else if(response.error_code == 200){
+            swal({
+              position: "top-end",
+              type: "danger",
+              icon: "error",
+              title: response.error_msg,
+              showConfirmButton: true,
+              timer: 5000
+            }).then((yesdashBoard) => {
+              if (yesdashBoard) {
+               window.location.reload();   
+              }
+          });
+          }else{
+            swal({
+              position: "top-end",
+              type: "danger",
+              icon: "error",
+              title: response.error_msg,
+              showConfirmButton: true,
+              timer: 5000
+            }).then((yesdashBoard) => {
+              if (yesdashBoard) {
+               window.location.reload();   
+              }
+          });
+          }  
+        }
+     });
+});
+
   $('#submitBtn').click(function(){
     $('#userinfoForm').validate();
     if($('#userinfoForm').valid()){
@@ -626,8 +672,6 @@ console.log("Check base------>",base_url);
       var location = $("#location").val();
       var workingat = $("#workingat").val();
       var relationship = $("#relationship").val();
-      // var createdat = $("#createdat").val();
-      // var modifiedat = $("#modifiedat").val();
         
         $.ajax({
           type : "post",
@@ -766,12 +810,6 @@ console.log("Check base------>",base_url);
 
   function addFriendRequestBtn(uid,fid,flag){
 
-    //const div = document.querySelector('.test');
-    // console.log("Ceck div----",div);return false;
-    // div.addEventListener('click', () => {
-    //   div.classList.add('hidden');
-    // })
-    //console.log("Check--------------------->",div);
     var uid = uid;
     var fid = fid;
     var flag = flag;
@@ -846,12 +884,6 @@ console.log("Check base------>",base_url);
 
   function addFriendsBtn(uid,fid,flag){
 
-    //const div = document.querySelector('.test');
-    // console.log("Ceck div----",div);return false;
-    // div.addEventListener('click', () => {
-    //   div.classList.add('hidden');
-    // })
-    //console.log("Check--------------------->",div);
     var uid = uid;
     var fid = fid;
     var flag = flag;

@@ -408,6 +408,31 @@ class Home extends CI_Controller {
 		echo json_encode($returnArr);
 	}
 
+	public function submitPost(){
+		$data = array();
+		if($_POST['title'] == ''){
+			$data['error_code'] = 100;
+			$data['error_msg'] = "Please Enter Title First";
+		}
+		else{
+			$uid = $_SESSION['userdetails']['uid'];
+			$uploadPath = "upload-post/";
+			move_uploaded_file($_FILES['file']['tmp_name'], $uploadPath . $_FILES['file']['name']);
+			$title = $_POST['title'];
+			$result = $this->User->SavePostData($title,$uploadPath.$_FILES['file']['name'],$uid);
+			if($result == true){
+				$data['error_code'] = 200;
+				$data['error_msg'] = "Post uploaded successfully!";
+			}
+			else{
+				$data['error_code'] = 300;
+				$data['error_msg'] = "Something went wrong!";
+			}
+		}
+		echo json_encode($data);
+		
+	}
+
 	public function logout(){
 		session_destroy();
 		redirect(base_url());

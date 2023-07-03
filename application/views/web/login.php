@@ -24,6 +24,8 @@
     <link rel="stylesheet" href="<?php echo ASSET_WEB_URL; ?>assets/css/uikit.css">
     <link rel="stylesheet" href="<?php echo ASSET_WEB_URL; ?>assets/css/style.css">
     <link rel="stylesheet" href="<?php echo ASSET_WEB_URL; ?>assets/css/tailwind.css">
+    <script src="<?php echo ASSET_WEB_URL;?>assets/js/jquery-3.3.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
     <script>const BASE_URL="<?=ASSET_WEB_URL?>"</script>
 </head>
 
@@ -129,7 +131,7 @@
         })(window, document);
     </script>
         
-    <script src="<?php echo ASSET_WEB_URL;?>assets/js/jquery-3.3.1.min.js"></script>
+    
     // <script src="<?php echo ASSET_WEB_URL; ?>/libs/jquery/jquery.min.js"></script>
     
     <input type="hidden" name="baseurl" value="<?php echo BASE_URL ?>" id="baseurl">

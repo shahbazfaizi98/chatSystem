@@ -103,6 +103,7 @@ if(PLATFORM_ENV == 'PROD'){
 defined('BASE_URL')OR define('BASE_URL', $base_url); // base url
 defined('FOLDER_NAME')OR define('FOLDER_NAME', $folder_name); // folder name
 defined('ASSET_WEB_URL')OR define('ASSET_WEB_URL', BASE_URL.'public/'); // assests for web
+defined('POST_WEB_URL')OR define('POST_WEB_URL', BASE_URL.'public/uploaded-post'); // assests for web
 
 
 defined('SUCCESS_CLASS')        OR define('SUCCESS_CLASS', "alert-success"); 
