@@ -275,6 +275,16 @@ class User extends CI_Model {
       $data['status'] = 1;
       return $this->db->insert("tbl_post",$data);
     }
+
+    public function SaveSendMessage($message,$uid,$fid){
+      $data = array();
+      //$data['mid'] = $mid;
+      $data['uid'] = $uid;
+      $data['fid'] = $fid;
+      $data['message'] = $message;
+      $data['status'] = 1;
+      return $this->db->insert("tbl_message",$data);
+    }
     
     /* -------------------------Encrypt Decrypt Function Start ------------------------- */
 

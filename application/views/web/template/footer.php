@@ -153,6 +153,49 @@
         </div>
     </div>
 
+    <div id="msg-modal" class="uk-modal" uk-modal>
+        <div class="uk-modal-dialog feed-modal">
+            <button class="uk-modal-close-default lg:-mt-9 lg:-mr-9 -mt-5 -mr-5 shadow-lg bg-white rounded-full p-4 transition dark:bg-gray-600 dark:text-white" type="button" uk-close></button>
+                <div class="flex-1 bg-white dark:bg-gray-900 dark:text-gray-100">
+                
+                    <!-- post header-->
+                    <div class="border-b flex items-center justify-between px-5 py-3 dark:border-gray-600">
+                        <div class="flex flex-1 items-center space-x-4">
+                            <a href="#">
+                                <div class="bg-gradient-to-tr from-yellow-600 to-pink-600 p-0.5 rounded-full">
+                                    <img src="assets/images/avatars/avatar-2.jpg"
+                                        class="bg-gray-200 border border-white rounded-full w-8 h-8">
+                                </div>
+                            </a>
+                            <span class="block text-lg font-semibold"> Johnson smith </span>
+                        </div>
+                        <a href="#"> 
+                            <i  class="icon-feather-more-horizontal text-2xl rounded-full p-2 transition -mr-1"></i>
+                        </a>
+                    </div>
+                    <div class="story-content p-4" data-simplebar>
+
+                        <form class="uk-form-stacked" enctype='multipart/form-data' method="POST">
+
+                            <div class="uk-margin">
+                                <label class="uk-form-label" for="form-stacked-text">Message</label>
+                                <div class="uk-form-controls">
+                                <input class="uk-input" id="hiddenUid" name="hiddenUid" type="hidden" placeholder="Enter Your Message">
+                                <input class="uk-input" id="hiddenFid" name="hiddenFid" type="hidden" placeholder="Enter Your Message">
+                                    <input class="uk-input" id="message" name="message" type="text" placeholder="Enter Your Message">
+                                </div>
+                            </div>
+
+                    </div>
+                    <div class="p-3 border-t dark:border-gray-600">
+                    <button type="button" id="sendMsg" href="#" class="uk-align-center test btn border border-gray-200 font-semibold px-4 py-1 rounded-full hover:bg-pink-600 hover:text-white hover:border-pink-600 dark:border-gray-800"> Send </button>
+                    </div>
+                    </form>
+                </div>
+
+        </div>
+    </div>
+
 
     <!-- <script>
         

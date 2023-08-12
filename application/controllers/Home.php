@@ -433,6 +433,33 @@ class Home extends CI_Controller {
 		
 	}
 
+	public function sendMsg(){
+		$data = array();
+		if($_POST['message'] == ''){
+			$data['error_code'] = 100;
+			$data['error_msg'] = "Please Type Your Message";
+		}
+		else{
+			$uid = $_POST['uid'];
+			$fid = $_POST['fid'];
+			// 
+			// $uid = $_POST['uid'];
+			// $fid = $_POST['fid'];
+			$message = $this->User->enbdnew_encrypt($_POST['message']);
+			$result = $this->User->SaveSendMessage($message,$uid,$fid);
+			if($result == true){
+				$data['error_code'] = 200;
+				$data['error_msg'] = "Message Sent Successfully!";
+			}
+			else{
+				$data['error_code'] = 100;
+				$data['error_msg'] = "Something went wrong!";
+			}
+		}
+		echo json_encode($data);
+		
+	}
+
 	public function logout(){
 		session_destroy();
 		redirect(base_url());

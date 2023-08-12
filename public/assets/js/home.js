@@ -868,8 +868,12 @@ var asset_url = $('#base_url').attr('asset');
                   <span class="block capitalize text-sm"> Australia </span>
               </div>
           </div>
-          
-          <button type="button" id=frnd`+friendid+` href="#" class="test btn border border-gray-200 font-semibold px-4 py-1 rounded-full hover:bg-pink-600 hover:text-white hover:border-pink-600 dark:border-gray-800" style="background: #1776edd1;color:#fff;" onclick="addFriendsBtn('${hid}','${friendid}','4');"> Send Message </button> &nbsp;&nbsp;&nbsp;
+
+          <a href="#msg-modal" uk-toggle class="btn btn-success" data="${friendid}">
+            Send Message
+          </a>&nbsp;&nbsp;&nbsp;
+
+          <button type="button" id=frnd`+friendid+` href="#" class="test btn border border-gray-200 font-semibold px-4 py-1 rounded-full hover:bg-pink-600 hover:text-white hover:border-pink-600 dark:border-gray-800" style="background: #2ea12ec7;color:#fff;" onclick="openSendModal('${hid}','${friendid}','2');"> Test </button> &nbsp;&nbsp;&nbsp;
 
           <button type="button" id=frnd`+friendid+` href="#" class="test btn border border-gray-200 font-semibold px-4 py-1 rounded-full hover:bg-pink-600 hover:text-white hover:border-pink-600 dark:border-gray-800" style="background: #2ea12ec7;color:#fff;" onclick="addFriendsBtn('${hid}','${friendid}','2');"> Remove </button> &nbsp;&nbsp;&nbsp;
 
@@ -904,4 +908,82 @@ var asset_url = $('#base_url').attr('asset');
         }
       }
     });
-  }  
+  }   
+  
+  function openSendModal(uid,fid){
+    console.log("Uid-------------->"+uid);
+    console.log("Fid-------------->"+fid);
+    $("#hiddenUid").val(uid);
+    $("#hiddenFid").val(fid);
+    UIkit.modal('#msg-modal').toggle();
+    //console.log("CHeck------>"+$("#msg-modal").attr("style", "display:block").show());
+    //UIkit.modal('##msg-modal').show();
+  }
+
+  $('#sendMsg').on('click', function() {
+    console.log("hi");
+    var mid = $('#mid').val();  
+    var uid = $('#hiddenUid').val();   
+    var fid = $('#hiddenFid').val();    
+    var message = $('#message').val();   
+    var form_data = new FormData();                  
+    form_data.append('mid', mid);
+    // form_data.append('uid', uid);
+    // form_data.append('fid', fid);
+    form_data.append('message', message);
+    form_data.append('uid', uid);
+    form_data.append('fid', fid);
+    console.log(form_data);                             
+    $.ajax({
+        url: base_url + 'web/send-msg',// <-- point to server-side PHP script 
+        dataType: 'JSON',  // <-- what to expect back from the PHP script, if anything
+        cache: false,
+        contentType: false,
+        processData: false,
+        data: form_data,                         
+        type: 'post',
+        success: function(response){
+          console.log(response);
+          if(response.error_code == 200){
+            swal({
+              position: "top-end",
+              type: "success",
+              icon: "success",
+              title: response.error_msg,
+              showConfirmButton: true,
+              timer: 5000
+            }).then((yesdashBoard) => {
+              if (yesdashBoard) {
+               window.location.reload();   
+              }
+          });
+          }else if(response.error_code == 100){
+            swal({
+              position: "top-end",
+              type: "danger",
+              icon: "error",
+              title: response.error_msg,
+              showConfirmButton: true,
+              timer: 5000
+            }).then((yesdashBoard) => {
+              if (yesdashBoard) {
+               window.location.reload();   
+              }
+          });
+          }else{
+            swal({
+              position: "top-end",
+              type: "danger",
+              icon: "error",
+              title: response.error_msg,
+              showConfirmButton: true,
+              timer: 5000
+            }).then((yesdashBoard) => {
+              if (yesdashBoard) {
+               window.location.reload();   
+              }
+          });
+          }  
+        }
+     });
+});

@@ -80,3 +80,4 @@ $route['web/save-friends'] ='home/savefriends';
 $route['web/logout'] = 'home/logout';
 
 $route['web/submit-post'] = 'home/submitPost';
+$route['web/send-msg'] = 'home/sendMsg';
