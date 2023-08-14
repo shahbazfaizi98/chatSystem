@@ -233,6 +233,46 @@
     
         })(window, document);
     </script> -->
+    <script>
+    $(document).ready(function () {
+        //console.log("document loaded");
+        setInterval(() => {
+            var uid = '<?php echo $_SESSION['userdetails']['uid'];?>';
+            if(uid!=''){
+                $.ajax({
+                type: 'post',
+                url: base_url + 'web/get-messages',
+                dataType: 'json',
+                data: {uid: uid},
+                success: function (response){
+                    if(response!=''){
+                        
+                        
+                            $.each(response, function (key, val) {
+                                console.log(val.friendid);
+                               output = `<li>
+                                    <a href="#">
+                                        <div class="drop_avatar"> <img src="<?=ASSET_WEB_URL?>assets/images/avatars/avatar-1.jpg" alt="">
+                                        </div>
+                                        <div class="drop_content">
+                                            <strong> John menathon </strong> <time> 6:43 PM</time>
+                                            <p>${val.message}</p>
+                                        </div>
+                                    </a>
+                                </li>`;
+                                $("#messageEntry").append(output);
+                            });
+                        
+                    }
+                    else{
+                        console.log(" Else Message------------>"+response); 
+                    }
+                }
+                });
+            }
+        }, 5000);
+    });
+    </script>
     <input type="hidden" id="hid" name="hid" value="<?php echo $_SESSION['userdetails']['uid'];?>">
     <input type="hidden" name="baseurl" value="<?= BASE_URL ?>" id="baseurl" ?>">
     <!-- JAVASCRIPT -->

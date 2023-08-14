@@ -81,3 +81,4 @@ $route['web/logout'] = 'home/logout';
 
 $route['web/submit-post'] = 'home/submitPost';
 $route['web/send-msg'] = 'home/sendMsg';
+$route['web/get-messages'] = 'home/getmessages';

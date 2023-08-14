@@ -292,67 +292,9 @@
                             <h4
                                 class="-mt-5 -mx-5 bg-gradient-to-t from-gray-100 to-gray-50 border-b font-bold px-6 py-3">
                                 Messages </h4>
-                            <ul class="dropdown_scrollbar" data-simplebar>
-                                <li>
-                                    <a href="#">
-                                        <div class="drop_avatar"> <img src="<?=ASSET_WEB_URL?>assets/images/avatars/avatar-1.jpg" alt="">
-                                        </div>
-                                        <div class="drop_content">
-                                            <strong> John menathon </strong> <time> 6:43 PM</time>
-                                            <p> Lorem ipsum dolor sit amet, consectetur </p>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <div class="drop_avatar"> <img src="<?=ASSET_WEB_URL?>assets/images/avatars/avatar-2.jpg" alt="">
-                                        </div>
-                                        <div class="drop_content">
-                                            <strong> Zara Ali </strong> <time>12:43 PM</time>
-                                            <p>  Sediam nonummy nibh euismod tincidunt laoreet dolore  </p>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <div class="drop_avatar"> <img src="<?=ASSET_WEB_URL?>assets/images/avatars/avatar-3.jpg" alt="">
-                                        </div>
-                                        <div class="drop_content">
-                                            <strong> Mohamed Ali </strong> <time> Wed </time>
-                                            <p> Lorem ipsum dolor sit amet, consectetur </p>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <div class="drop_avatar"> <img src="<?=ASSET_WEB_URL?>assets/images/avatars/avatar-1.jpg" alt="">
-                                        </div>
-                                        <div class="drop_content">
-                                            <strong> John menathon </strong> <time> Sun</time>
-                                            <p> Namliber tempor cumsoluta nobis eleifend option adipiscing </p>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <div class="drop_avatar"> <img src="<?=ASSET_WEB_URL?>assets/images/avatars/avatar-2.jpg" alt="">
-                                        </div>
-                                        <div class="drop_content">
-                                            <strong> Zara Ali </strong> <time> Fri</time>
-                                            <p> Lorem ipsum dolor sit amet, consectetur </p>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <div class="drop_avatar"> <img src="<?=ASSET_WEB_URL?>assets/images/avatars/avatar-3.jpg" alt="">
-                                        </div>
-                                        <div class="drop_content">
-                                            <strong> Mohamed Ali </strong> <time>1 Week ago</time>
-                                            <p>  Sediam nonummy nibh euismod tincidunt laoreet dolore  </p>
-                                        </div>
-                                    </a>
-                                </li>
+                            <ul class="dropdown_scrollbar" data-simplebar id="messageEntry">
+                                
+                            
                             </ul>
                             <a href="#" class="see-all">See all</a>
                         </div>

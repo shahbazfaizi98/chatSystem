@@ -460,6 +460,15 @@ class Home extends CI_Controller {
 		
 	}
 
+	public function getmessages(){
+		$data = array();
+		$uid = $this->input->post('uid');
+		$messages = $this->User->getAllMessages($uid);
+		//echo "<pre>";print_r($messages);die;
+		
+		echo json_encode($messages);
+	}
+
 	public function logout(){
 		session_destroy();
 		redirect(base_url());

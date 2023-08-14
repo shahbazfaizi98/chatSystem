@@ -285,6 +285,14 @@ class User extends CI_Model {
       $data['status'] = 1;
       return $this->db->insert("tbl_message",$data);
     }
+
+    public function getAllMessages($uid){
+      //$sql = "SELECT ru.uid as friendid, ru.fullname From tbl_friend fr LEFT JOIN tbl_register ru ON ru.uid=fr.uid where fr.fid='".$uid."' and fr.status=1";
+      $sql = "SELECT msg.mid, msg.uid as userid, msg.fid as friendid, ru.fullname,msg.message FROM `tbl_message` msg LEFT JOIN tbl_register ru ON ru.uid = msg.fid where msg.uid='".$uid."' AND msg.isRead != 1 ORDER BY msg.mid desc LIMIT 1";
+      $query = $this->db->query($sql);
+      $data = $query->result_array();
+      return $data;
+    }
     
     /* -------------------------Encrypt Decrypt Function Start ------------------------- */
 
